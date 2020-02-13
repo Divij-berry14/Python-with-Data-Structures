@@ -1,9 +1,37 @@
+import queue
 class Binary_Tree_Node():
     def __init__(self,data):
         self.data=data
         self.leftC=None
         self.rightC=None
         
+
+def level_wise_input():
+    q=queue.Queue()
+    print("Enter root")
+    root_data=int(input())
+    if root_data==-1:
+        return None
+    root=Binary_Tree_Node(root_data)
+    q.put(root)
+    while(not(q.empty())):
+        current_node=q.get()
+        print("Enter left child of",current_node.data)
+        left_child_data=int(input())
+        if left_child_data!=-1:
+            left_child=Binary_Tree_Node(left_child_data)
+            current_node.left=left_child
+            q.put(left_child)
+            
+        print("Enter right child of",current_node.data)
+        right_child_data=int(input())
+        if right_child_data!=-1:
+            right_child=Binary_Tree_Node(right_child_data)
+            current_node.right=right_child
+            q.put(right_child)
+    
+    return root
+
 def print_Detailed_Tree(root):
     if root==None:
         return
@@ -125,44 +153,56 @@ def getHeight_and_CheckBalanced(root):
         return h,True
     else:
         return h,False
-    
-    
-bt1=Binary_Tree_Node(1)
-bt2=Binary_Tree_Node(4)
-bt3=Binary_Tree_Node(5)
-bt4=Binary_Tree_Node(3)
-bt5=Binary_Tree_Node(6)
-bt6=Binary_Tree_Node(7)
-bt1.leftC=bt2
-bt1.rightC=bt3
-bt2.leftC=bt4
-bt3.leftC=bt5
-bt4.leftC=bt6
-print("Detailed Binary Tree:")
-print_Detailed_Tree(bt1)
 
-root=Tree_input()
+def diameter_tree(root):
+    if root== None:
+        return 0
+    leftD=diameter_tree(root.left)
+    rightD=diameter_tree(root.right)
+    d=height(root.left)+height(root.right)
+    return max(leftD,rightD,d)
+    
+
+
+#bt1=Binary_Tree_Node(1)
+#bt2=Binary_Tree_Node(4)
+#bt3=Binary_Tree_Node(5)
+#bt4=Binary_Tree_Node(3)
+#bt5=Binary_Tree_Node(6)
+#bt6=Binary_Tree_Node(7)
+#bt1.leftC=bt2
+#bt1.rightC=bt3
+#bt2.leftC=bt4
+#bt3.leftC=bt5
+#bt4.leftC=bt6
+#print("Detailed Binary Tree:")
+#print_Detailed_Tree(bt1)
+#
+#root=Tree_input()
+#print_Detailed_Tree(root)
+#
+#print("Number of nodes in Binary Tree are",num_Nodes(root))
+#
+#print("Largest node in the Binary Tree",Largest_Node(root))
+#
+#print("Nodes greater than x",countNodesGreaterThanX(root,4))
+#
+#print("Height of the Tree",height(root))
+#
+#print("Number of leaf Nodes:",number_of_leaf_Nodes(root))
+#
+#print("Print number of nodes at depth k:",print_Nodes_At_DepthK(root,2))
+#
+#print("Print number of nodes at depth k:",print_Nodes_At_DepthK_V2(root,2))
+#
+#new_root=Remove_Leaf_Nodes(root)
+#print("After removal of leaf nodes, Binary Tree is:")
+#print_Detailed_Tree(new_root)
+#
+#check=is_Balanced(root)
+#print("To check if the Binary Tree is Balanced or not:",is_Balanced(root))
+#
+#print("To check if the Binary Tree is Balanced or not and Height of the Bianry Tree/Improved Version:",getHeight_and_CheckBalanced(root))
+
+root=level_wise_input()
 print_Detailed_Tree(root)
-
-print("Number of nodes in Binary Tree are",num_Nodes(root))
-
-print("Largest node in the Binary Tree",Largest_Node(root))
-
-print("Nodes greater than x",countNodesGreaterThanX(root,4))
-
-print("Height of the Tree",height(root))
-
-print("Number of leaf Nodes:",number_of_leaf_Nodes(root))
-
-print("Print number of nodes at depth k:",print_Nodes_At_DepthK(root,2))
-
-print("Print number of nodes at depth k:",print_Nodes_At_DepthK_V2(root,2))
-
-new_root=Remove_Leaf_Nodes(root)
-print("After removal of leaf nodes, Binary Tree is:")
-print_Detailed_Tree(new_root)
-
-check=is_Balanced(root)
-print("To check if the Binary Tree is Balanced or not:",is_Balanced(root))
-
-print("To check if the Binary Tree is Balanced or not and Height of the Bianry Tree/Improved Version:",getHeight_and_CheckBalanced(root))
