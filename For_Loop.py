@@ -1,3 +1,10 @@
+li=[1,2,3,4,5]
+d=int(input())
+l=len(li)
+for i in range(l):
+    li[i]=li[d-i]
+
+print(li)
 #         1
 #        232
 #       34543
@@ -139,23 +146,23 @@
 # 21   22  23   24  25
 # 16   17  18   19  20
 # 6    7    8   9   10
-n=int(input())
-for i in range(1,n+1,2):
-    temp=n*i
-    for j in range(temp-n+1,temp+1):
-        print(j,end=" ")
-    print()
-    
-n1=0
-if n%2!=0:
-    n1=n-1
-else:
-    n1=n
-for k in range(n1,1,-2):
-    temp=k*n
-    for m in range(temp-n+1,temp+1):
-        print(m,end=" ")
-    print()
+#n=int(input())
+#for i in range(1,n+1,2):
+#    temp=n*i
+#    for j in range(temp-n+1,temp+1):
+#        print(j,end=" ")
+#    print()
+#    
+#n1=0
+#if n%2!=0:
+#    n1=n-1
+#else:
+#    n1=n
+#for k in range(n1,1,-2):
+#    temp=k*n
+#    for m in range(temp-n+1,temp+1):
+#        print(m,end=" ")
+#    print()
 
 #------------------------------------------------------------------------------
 
@@ -167,31 +174,35 @@ for k in range(n1,1,-2):
 #4333334  
 #4444444
 
-n = int(input())
-dec = 0
-inc = 0
-same = 2*n - 1
-for i in range(2*n - 1):
-  a = n
-  for j in range(dec):
-    print(a, end = '')
-    a = a - 1
-    
-  for j in range(same):
-    print(a, end = '')
-    
-  for j in range(inc):
-    a = a + 1
-    print(a, end = '')
+#n = int(input())
+#dec = 0
+#inc = 0
+#same = 2*n - 1
+#for i in range(2*n - 1):
+#  a = n
+#  for j in range(dec):
+#    print(a, end = '')
+#    a = a - 1
+#    
+#  for j in range(same):
+#    print(a, end = '')
+#    
+#  for j in range(inc):
+#    a = a + 1
+#    print(a, end = '')
+#  
+#  if i < n - 1:
+#    dec = dec + 1
+#    inc = inc + 1
+#    same = same - 2
+#    
+#  else:
+#    dec = dec - 1
+#    inc = inc - 1
+#    same = same + 2
+#  
+#  print()
+
   
-  if i < n - 1:
-    dec = dec + 1
-    inc = inc + 1
-    same = same - 2
-    
-  else:
-    dec = dec - 1
-    inc = inc - 1
-    same = same + 2
+
   
-  print()

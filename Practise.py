@@ -144,10 +144,10 @@ def input_tree():
 def level_wise_input():
     q=queue.Queue()
     print("Enter root")
-    rootdata=int(input())
-    if rootdata==-1:
+    root_data=int(input())
+    if root_data==-1:
         return None
-    root=Binary_Tree(rootdata)
+    root=Binary_Tree(root_data)
     q.put(root)
     while(not(q.empty())):
         curr_node=q.get()
@@ -183,41 +183,68 @@ def print_level_wise_input(root):
             q.put(curr_node.right)
         
         print(curr_data,"L:",left,"R:",right)
-#        else:
-#            print("L",curr_node.left.data,end=",")
-#            print("R",curr_node.right.data,end="")
-        
-bt1=Binary_Tree(1)
-bt2=Binary_Tree(3)
-bt3=Binary_Tree(4)
-bt4=Binary_Tree(5)
-bt5=Binary_Tree(6)
-bt6=Binary_Tree(7)
 
-bt1.left=bt2
-bt1.right=bt3
-bt3.right=bt4
-bt3.left=bt5
-bt2.left=bt6
-#root=input_tree()
-root=level_wise_input()
-#print_detail_tree(root)
-print_level_wise_input(root)
-#print_detail_tree(bt1)  
-#print()
-#root=remove_leaf_nodes(root)
-#print_detail_tree(root)
-#print("Number of nodes",num_nodes(root))
-#print("Post Order")
-#print_postOrder(root)
-#print("preOrder")
-#preOrder(root)  
-#print("sum of nodes",sum_nodes(root))
-#print("Largest Node",largest_node(root))   
-#print("Height Tree",height_tree(root))   
-#print("No.of leaf nodes",num_nodes(root)) 
-#depth_k(root,2)     
-#depth_k_mod(root,2)
-#remove_leaf_nodes(root)
-#print("Is the Binary Tree balanced",check_balanced(root))
-#print("Diameter of Tree is:",diameter_tree(root))
+def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
+    if len(preOrder)==0:
+        return None
+    rootData=preOrder[0]
+    root=Binary_Tree(rootData)
+    rootInorderIndex=-1
+    for i in range(len(inOrder)):
+        if inOrder[i]==rootData:
+            rootInorderIndex=i
+            break
+    if rootInorderIndex==-1:
+        return None
+    leftInorder=inOrder[0:rootInorderIndex]
+    rightInorder=inOrder[rootInorderIndex+1:]
+
+    lenleftInorder=len(leftInorder)
+    leftpreOrder=preOrder[1:lenleftInorder+1]
+    rightpreOrder=preOrder[lenleftInorder+1:]
+
+    leftChild=Build_Tree_from_PreOrder_Inorder(leftpreOrder,leftInorder)
+    rightChild=Build_Tree_from_PreOrder_Inorder(rightpreOrder,rightInorder)
+
+    root.left=leftChild
+    root.right=rightChild
+    return root
+
+# bt1=Binary_Tree(1)
+# bt2=Binary_Tree(3)
+# bt3=Binary_Tree(4)
+# bt4=Binary_Tree(5)
+# bt5=Binary_Tree(6)
+# bt6=Binary_Tree(7)
+#
+# bt1.left=bt2
+# bt1.right=bt3
+# bt3.right=bt4
+# bt3.left=bt5
+# bt2.left=bt6
+# #root=input_tree()
+# root=level_wise_input()
+# #print_detail_tree(root)
+# print_level_wise_input(root)
+# print_detail_tree(bt1)
+# print()
+# root=remove_leaf_nodes(root)
+# print_detail_tree(root)
+# print("Number of nodes",num_nodes(root))
+# print("Post Order")
+# print_postOrder(root)
+# print("preOrder")
+# preOrder(root)
+# print("sum of nodes",sum_nodes(root))
+# print("Largest Node",largest_node(root))
+# print("Height Tree",height_tree(root))
+# print("No.of leaf nodes",num_nodes(root))
+# depth_k(root,2)
+# depth_k_mod(root,2)
+# remove_leaf_nodes(root)
+# print("Is the Binary Tree balanced",check_balanced(root))
+# print("Diameter of Tree is:",diameter_tree(root))
+preOrder=[1,2,4,5,3,6,7]
+inOrder=[4,2,5,1,6,3,7]
+root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
+print_detail_tree(root)
