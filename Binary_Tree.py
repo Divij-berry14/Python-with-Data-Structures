@@ -1,5 +1,5 @@
 import queue
-class Binary_Tree_Node():
+class Binary_Tree_Node:
     def __init__(self,data):
         self.data=data
         self.leftC=None
@@ -34,32 +34,32 @@ def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
 def level_wise_input():
     q=queue.Queue()
     print("Enter root")
-    root_data=int(input())
-    if root_data==-1:
+    root_data = int(input())
+    if root_data == -1:
         return None
-    root=Binary_Tree_Node(root_data)
+    root = Binary_Tree_Node(root_data)
     q.put(root)
     while(not(q.empty())):
         current_node=q.get()
         print("Enter left child of",current_node.data)
-        left_child_data=int(input())
-        if left_child_data!=-1:
-            left_child=Binary_Tree_Node(left_child_data)
-            current_node.leftC=left_child
+        left_child_data = int(input())
+        if left_child_data != -1:
+            left_child = Binary_Tree_Node(left_child_data)
+            current_node.leftC = left_child
             q.put(left_child)
 
         print("Enter right child of",current_node.data)
-        right_child_data=int(input())
-        if right_child_data!=-1:
-            right_child=Binary_Tree_Node(right_child_data)
-            current_node.rightC=right_child
+        right_child_data = int(input())
+        if right_child_data != -1:
+            right_child = Binary_Tree_Node(right_child_data)
+            current_node.rightC = right_child
             q.put(right_child)
 
     return root
 
 
 def print_level_wise_input(root):
-    q = queue.Queue()
+    q = queue . Queue()
     q.put(root)
     while (not (q.empty())):
         curr_node = q.get()
