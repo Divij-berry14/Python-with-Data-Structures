@@ -29,6 +29,16 @@ def print_elements_range_BST(root,k1,k2):
         print_elements_range_BST(root.left, k1, k2)
         print_elements_range_BST(root.right, k1, k2)
 
+def Sorted_Array_to_Binary_Search_Tree(arr):
+    l = len(arr)
+    if l <= 0 or arr == None:
+        return None
+    root_index = (l-1)//2
+    root = Binary_Tree_Node(arr[root_index])
+    root.left = Sorted_Array_to_Binary_Search_Tree(arr[:root_index])
+    root.right = Sorted_Array_to_Binary_Search_Tree(arr[root_index+1:])
+    return root
+
 def level_wise_input():
     q=queue.Queue()
     print("Enter root")
@@ -67,8 +77,12 @@ def print_detailed_tree(root):
     print_detailed_tree(root.left)
     print_detailed_tree(root.right)
 
-root = level_wise_input()
+# root = level_wise_input()
+# print_detailed_tree(root)
+# res=Binary_Search_Tree(root, 9)
+# print(res)
+# print_elements_range_BST(root, 5, 10)
+print("Enter Sorted array")
+arr = [int(x) for x in input().split()]
+root = Sorted_Array_to_Binary_Search_Tree(arr)
 print_detailed_tree(root)
-res=Binary_Search_Tree(root, 9)
-print(res)
-print_elements_range_BST(root, 5, 10)
