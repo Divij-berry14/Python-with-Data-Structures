@@ -15,6 +15,20 @@ def Binary_Search_Tree(root,k):
     else:
         return Binary_Search_Tree(root.right,k)
 
+def print_elements_range_BST(root,k1,k2):
+    if root == None:
+        return
+    # if root.data>k1 and root.data<k2:
+    #     print(root.data,sep=",")
+    if root.data<k1:
+        print_elements_range_BST(root.right,k1,k2)
+    elif root.data>k2:
+        print_elements_range_BST(root.left,k1,k2)
+    else:
+        print(root.data)
+        print_elements_range_BST(root.left,k1,k2)
+        print_elements_range_BST(root.right,k1,k2)
+
 def level_wise_input():
     q=queue.Queue()
     print("Enter root")
@@ -44,16 +58,17 @@ def level_wise_input():
 def print_detailed_tree(root):
     if root==None:
         return None
-    print(root.data,sep=":")
+    print(root.data,end=":")
     if root.left!=None:
-        print("L:",root.left.data,end=",")
+        print("L",root.left.data,end=",")
     if root.right!=None:
-        print("R:",root.right.data,end="")
+        print("R",root.right.data,end="")
     print()
     print_detailed_tree(root.left)
     print_detailed_tree(root.right)
 
 root = level_wise_input()
 print_detailed_tree(root)
-res=Binary_Search_Tree(root, 5)
+res=Binary_Search_Tree(root, 9)
 print(res)
+print_elements_range_BST(root,5,10)

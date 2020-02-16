@@ -222,8 +222,8 @@ def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
 # bt3.right=bt4
 # bt3.left=bt5
 # bt2.left=bt6
-# #root=input_tree()
-# root=level_wise_input()
+#root=input_tree()
+root=level_wise_input()
 # #print_detail_tree(root)
 # print_level_wise_input(root)
 # print_detail_tree(bt1)
@@ -244,7 +244,7 @@ def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
 # remove_leaf_nodes(root)
 # print("Is the Binary Tree balanced",check_balanced(root))
 # print("Diameter of Tree is:",diameter_tree(root))
-preOrder=[1,2,4,5,3,6,7]
-inOrder=[4,2,5,1,6,3,7]
-root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
+# preOrder=[1,2,4,5,3,6,7]
+# inOrder=[4,2,5,1,6,3,7]
+# root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
 print_detail_tree(root)
