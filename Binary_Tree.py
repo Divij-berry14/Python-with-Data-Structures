@@ -88,7 +88,7 @@ def print_Detailed_Tree(root):
     print_Detailed_Tree(root.leftC)
     print_Detailed_Tree(root.rightC)
 
-def Tree_input():                         #USER_INPUT
+def Tree_input(): #USER_INPUT
     rootData=int(input())
     if rootData==-1:
         return None

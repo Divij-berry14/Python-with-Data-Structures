@@ -5,8 +5,8 @@ class Binary_Tree_Node:
         self.right = None
         self.data = data
 
-def Binary_Search_Tree(root, k):
-    if root==None:
+def Binary_Search_Tree (root, k):
+    if root == None:
         return False
     if root.data == k:
         return True
@@ -51,18 +51,32 @@ def max_Tree(root):
         return -110000
     leftMax=max_Tree(root.left)
     rightMax=max_Tree(root.right)
-    return max(leftMax,rightMax,root.data)
+    return max(leftMax, rightMax, root.data)
 
 def check_BST(root):
     if root==None:
         return True
     leftMax=max_Tree(root.left)
     rightMin=min_Tree(root.right)
-    if root.data>rightMin or root.data<=leftMax:
+    if root.data > rightMin or root.data <= leftMax:
         return False
     isLeftBST=check_BST(root.left)
     isrightBST=check_BST(root.right)
     return isLeftBST and isrightBST
+
+def check_BST2(root):
+    if root == None:
+        return 100000, -100000, True
+    leftMin, leftMax, is_left_BST= check_BST2(root.left)
+    rightMin, rightMAx, is_right_BST= check_BST2(root.right)
+    minimum= min(leftMin,rightMin, root.data)
+    maximum= max(leftMax,rightMAx,root.data)
+    is_tree_BST=True
+    if root.data <= leftMax or root.data> rightMin:
+        is_tree_BST = False
+    if not(is_left_BST) or not(is_right_BST):
+        is_tree_BST = False
+    return minimum, maximum, is_tree_BST
 
 def level_wise_input():
     q=queue.Queue()
@@ -74,7 +88,7 @@ def level_wise_input():
     q.put(root)
     while(not(q.empty())):
         current_node=q.get()
-        print("Enter left child of",current_node.data)
+        print("Enter left child of", current_node.data)
         left_child_data = int(input())
         if left_child_data != -1:
             left_child = Binary_Tree_Node(left_child_data)
@@ -111,4 +125,5 @@ print_detailed_tree(root)
 # arr = [int(x) for x in input().split()]
 # root = Sorted_Array_to_Binary_Search_Tree(arr)
 # print_detailed_tree(root)
-print(check_BST(root))
+# print(check_BST(root))
+print(check_BST2(root))
