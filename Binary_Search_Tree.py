@@ -39,6 +39,31 @@ def Sorted_Array_to_Binary_Search_Tree(arr):
     root.right = Sorted_Array_to_Binary_Search_Tree(arr[root_index+1:])
     return root
 
+def min_Tree(root):
+    if root==None:
+        return 10000
+    leftMin=min_Tree(root.left)
+    rightMin=min_Tree(root.right)
+    return min(leftMin,rightMin,root.data)
+
+def max_Tree(root):
+    if root==None:
+        return -110000
+    leftMax=max_Tree(root.left)
+    rightMax=max_Tree(root.right)
+    return max(leftMax,rightMax,root.data)
+
+def check_BST(root):
+    if root==None:
+        return True
+    leftMax=max_Tree(root.left)
+    rightMin=min_Tree(root.right)
+    if root.data>rightMin or root.data<=leftMax:
+        return False
+    isLeftBST=check_BST(root.left)
+    isrightBST=check_BST(root.right)
+    return isLeftBST and isrightBST
+
 def level_wise_input():
     q=queue.Queue()
     print("Enter root")
@@ -77,12 +102,13 @@ def print_detailed_tree(root):
     print_detailed_tree(root.left)
     print_detailed_tree(root.right)
 
-# root = level_wise_input()
-# print_detailed_tree(root)
+root = level_wise_input()
+print_detailed_tree(root)
 # res=Binary_Search_Tree(root, 9)
 # print(res)
 # print_elements_range_BST(root, 5, 10)
-print("Enter Sorted array")
-arr = [int(x) for x in input().split()]
-root = Sorted_Array_to_Binary_Search_Tree(arr)
-print_detailed_tree(root)
+# print("Enter Sorted array")
+# arr = [int(x) for x in input().split()]
+# root = Sorted_Array_to_Binary_Search_Tree(arr)
+# print_detailed_tree(root)
+print(check_BST(root))
