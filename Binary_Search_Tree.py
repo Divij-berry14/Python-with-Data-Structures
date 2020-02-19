@@ -5,6 +5,19 @@ class Binary_Tree_Node:
         self.right = None
         self.data = data
 
+class BST:
+    def __init__(self):
+        self.root=None
+        self.numNodes=0
+    def isPresent(self,data):
+        return False
+    def insert(self,data):
+        return
+    def delete_data(self,data):
+        return False
+    def count(self):
+        return 0
+
 def Binary_Search_Tree (root, k):
     if root == None:
         return False
@@ -117,8 +130,8 @@ def print_detailed_tree(root):
     print_detailed_tree(root.left)
     print_detailed_tree(root.right)
 
-root = level_wise_input()
-print_detailed_tree(root)
+# root = level_wise_input()
+# print_detailed_tree(root)
 # res=Binary_Search_Tree(root, 9)
 # print(res)
 # print_elements_range_BST(root, 5, 10)
@@ -126,5 +139,5 @@ print_detailed_tree(root)
 # arr = [int(x) for x in input().split()]
 # root = Sorted_Array_to_Binary_Search_Tree(arr)
 # print_detailed_tree(root)
-print(check_BST(root))
-print(check_BST2(root))
+# print(check_BST(root))
+# print(check_BST2(root))
