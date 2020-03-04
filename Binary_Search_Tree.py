@@ -5,57 +5,57 @@ class Binary_Tree_Node:
         self.right = None
         self.data = data
 
-# class BST:
-#     def __init__(self):
-#         self.root=None
-#         self.numNodes=0
-#
-#     def print_Tree_Helper(self,root):
-#         if root == None:
-#             return None
-#         print(root.data, end=":")
-#         if root.left != None:
-#             print("L",root.left.data, end=",")
-#         if root.right != None:
-#             print("R", root.right.data, end="")
-#         self.print_Tree_Helper(self.left)
-#         self.print_Tree_Helper(self.right)
-#
-#     def print_Tree(self):
-#         return self.print_Tree_Helper(self.root)
-#
-#     def isPresentHelper(self, root, data):
-#         if root == None:
-#             return False
-#         if root.data == data:
-#             return True
-#         if root.data > data:
-#             return self.isPresentHelper(root.left, data)
-#         else:
-#             return self.isPresentHelper(root.right, data)
-#
-#     def isPresent(self, data):
-#         return self.isPresentHelper(self.root, data)
-#
-#     def insert_Helper(self, root, data):
-#         if root == None:
-#             node = Binary_Tree_Node(data)
-#             return node
-#         if root.data > data:
-#             root.left = self.insert_Helper(root.left, data)
-#             return root
-#         else:
-#             root.right = self.insert_Helper(root.right, data)
-#             return root
-#
-#     def insert(self, data):
-#         self.numNodes = self.numNodes+1
-#         self.root = self.insert_Helper(self)
-#
-#     def delete_data(self,data):
-#
-#     def count(self):
-#         return 0
+class BST:
+    def __init__(self):
+        self.root=None
+        self.numNodes=0
+
+    def print_Tree_Helper(self,root):
+        if root == None:
+            return None
+        print(root.data, end=":")
+        if root.left != None:
+            print("L",root.left.data, end=",")
+        if root.right != None:
+            print("R", root.right.data, end="")
+        self.print_Tree_Helper(self.left)
+        self.print_Tree_Helper(self.right)
+
+    def print_Tree(self):
+        return self.print_Tree_Helper(self.root)
+
+    def isPresentHelper(self, root, data):
+        if root == None:
+            return False
+        if root.data == data:
+            return True
+        if root.data > data:
+            return self.isPresentHelper(root.left, data)
+        else:
+            return self.isPresentHelper(root.right, data)
+
+    def isPresent(self, data):
+        return self.isPresentHelper(self.root, data)
+
+    def insert_Helper(self, root, data):
+        if root == None:
+            node = Binary_Tree_Node(data)
+            return node
+        if root.data > data:
+            root.left = self.insert_Helper(root.left, data)
+            return root
+        else:
+            root.right = self.insert_Helper(root.right, data)
+            return root
+
+    def insert(self, data):
+        self.numNodes = self.numNodes+1
+        self.root = self.insert_Helper(self)
+
+    def delete_data(self,data):
+
+    def count(self):
+        return 0
 
 def Binary_Search_Tree (root, k):
     if root == None:
