@@ -52,8 +52,26 @@ class BST:
         self.numNodes = self.numNodes+1
         self.root = self.insert_Helper(self)
 
+    def delete_helper(self,root,data):
+        if root==None:
+            return False,None
+        if root.data<data:
+            deleted,new_right_node=self.delete_helper(root.right,data)
+            root.right=new_right_node
+            return deleted,root
+        if root.data>data:
+            deleted,new_root_left=self.delete_helper(root.left,data)
+            root.left=new_root_left
+            return deleted,root
+        if root.left==None and root.right==None:
+            return True,None
+        if 
     def delete_data(self,data):
-
+        deleted,new_root= self.delete_helper(self.root,data)
+        if deleted:
+            self.numNodes-=1
+        self.root=new_root
+        return deleted
     def count(self):
         return 0
 
