@@ -50,7 +50,7 @@ class BST:
 
     def insert(self, data):
         self.numNodes = self.numNodes+1
-        self.root = self.insert_Helper(self)
+        self.root = self.insert_Helper(self,data)
 
     def delete_helper(self,root,data):
         if root==None:
@@ -65,7 +65,16 @@ class BST:
             return deleted,root
         if root.left==None and root.right==None:
             return True,None
-        if 
+        if root.left==None:
+            return True,root.right
+        if root.right==None:
+            return True,root.left
+        replacement=self.min(root.right)
+        root.data=replacement
+        deleted,new_right_node=self.delete_helper(root.right,replacement)
+        root.right=new_right_node
+        return True,root
+
     def delete_data(self,data):
         deleted,new_root= self.delete_helper(self.root,data)
         if deleted:
@@ -187,8 +196,8 @@ def print_detailed_tree(root):
     print_detailed_tree(root.left)
     print_detailed_tree(root.right)
 
-root = level_wise_input()
-print_detailed_tree(root)
+# root = level_wise_input()
+# print_detailed_tree(root)
 # res=Binary_Search_Tree(root, 9)
 # print(res)
 # print_elements_range_BST(root, 5, 10)
@@ -196,6 +205,17 @@ print_detailed_tree(root)
 # arr = [int(x) for x in input().split()]
 # root = Sorted_Array_to_Binary_Search_Tree(arr)
 # print_detailed_tree(root)
-print(check_BST(root))
+# print(check_BST(root))
 # print(check_BST2(root))
+b=BST()
+b.insert(10)
+b.insert(5)
+b.insert(12)
+print(b.isPresent(10))
+print(b.isPresent(7))
+print(b.delete_data(4))
+print(b.delete_data(10))
+print(b.count())
+b.print_Tree()
+
 
