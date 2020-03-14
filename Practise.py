@@ -4,7 +4,7 @@ class Binary_Tree:
         self.left=None
         self.right=None
         self.data=data
-    
+
 def num_nodes(root):
     if root==None:
         return 0
@@ -50,11 +50,11 @@ def depth_k(root,k):
         print(root.data)
     depth_k(root.left,k-1)
     depth_k(root.right,k-1)
-    
+
 
 def depth_k_mod(root,k,d=0):
     if root==None:
-        return 
+        return
     if d==k:
         print(root.data)
         return
@@ -75,10 +75,10 @@ def check_balanced(root):
         return True
     else:
         return False
-    
+
 def remove_leaf_nodes(root):
     if root==None:
-        return 
+        return
     if root.left==None and root.right==None:
         return None
     root.left=remove_leaf_nodes(root.left)
@@ -108,7 +108,7 @@ def print_postOrder(root):
     if root.right!=None:
         print_postOrder(root.right)
     print(root.data)
-    
+
 def preOrder(root):
     if root==None:
         return 0
@@ -117,7 +117,7 @@ def preOrder(root):
         preOrder(root.left)
     if root.right!=None:
         preOrder(root.right)
-    
+
 def print_detail_tree(root):
     if root==None:
         return
@@ -157,14 +157,14 @@ def level_wise_input():
             left_child=Binary_Tree(left_data)
             curr_node.left=left_child
             q.put(left_child)
-        
+
         print("Enter right child of",curr_node.data)
         right_data=int(input())
         if right_data!=-1:
             right_child=Binary_Tree(right_data)
             curr_node.right=right_child
             q.put(right_child)
-    
+
     return root
 
 def print_level_wise_input(root):
@@ -181,7 +181,7 @@ def print_level_wise_input(root):
         if curr_node.right!=None:
             right=curr_node.right.data
             q.put(curr_node.right)
-        
+
         print(curr_data,"L:",left,"R:",right)
 
 def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
@@ -248,3 +248,7 @@ root=level_wise_input()
 # inOrder=[4,2,5,1,6,3,7]
 # root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
 print_detail_tree(root)
+
+
+
+

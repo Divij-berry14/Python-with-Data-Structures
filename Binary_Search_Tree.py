@@ -157,6 +157,23 @@ def check_BST2(root):
         is_tree_BST = False
     return minimum, maximum, is_tree_BST
 
+def node_to_root_path(root,s):
+    if root==None:
+        return None
+    if root==s:
+        l=list()
+        l.append(root.data)
+        return l
+    leftOutput=node_to_root_path(root.left,s)
+    if leftOutput!=None:
+        leftOutput.append(root.data,s)
+        return leftOutput
+    rightOutput=node_to_root_path(root.right,s)
+    if rightOutput!=None:
+        rightOutput.append(root.data,s)
+        return rightOutput
+    else:
+        return None
 
 def level_wise_input():
     q=queue.Queue()
@@ -207,15 +224,15 @@ def print_detailed_tree(root):
 # print_detailed_tree(root)
 # print(check_BST(root))
 # print(check_BST2(root))
-b=BST()
-b.insert(10)
-b.insert(5)
-b.insert(12)
-print(b.isPresent(10))
-print(b.isPresent(7))
-print(b.delete_data(4))
-print(b.delete_data(10))
-print(b.count())
-b.print_Tree()
+# b=BST()
+# b.insert(10)
+# b.insert(5)
+# b.insert(12)
+# print(b.isPresent(10))
+# print(b.isPresent(7))
+# print(b.delete_data(4))
+# print(b.delete_data(10))
+# print(b.count())
+# b.print_Tree()
 
 
