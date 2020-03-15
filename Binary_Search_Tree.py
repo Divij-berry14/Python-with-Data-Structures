@@ -5,7 +5,8 @@ class Binary_Tree_Node:
         self.right = None
         self.data = data
 
-class BST:
+class BST(Binary_Tree_Node):
+
     def __init__(self):
         self.root=None
         self.numNodes=0
@@ -18,8 +19,9 @@ class BST:
             print("L",root.left.data, end=",")
         if root.right != None:
             print("R", root.right.data, end="")
-        self.print_Tree_Helper(self.left)
-        self.print_Tree_Helper(self.right)
+        print()
+        self.print_Tree_Helper(root.left)
+        self.print_Tree_Helper(root.right)
 
     def print_Tree(self):
         return self.print_Tree_Helper(self.root)
@@ -50,39 +52,54 @@ class BST:
 
     def insert(self, data):
         self.numNodes = self.numNodes+1
-        self.root = self.insert_Helper(self,data)
+        self.root = self.insert_Helper(self.root,data)
 
-    def delete_helper(self,root,data):
+    def min(self,root):
         if root==None:
+            return 100000
+        if root.left==None:
+            return root.data
+        return self.min(root.left)
+
+    def delete_helper(self, root, data):
+        if root == None:
             return False,None
-        if root.data<data:
-            deleted,new_right_node=self.delete_helper(root.right,data)
-            root.right=new_right_node
-            return deleted,root
-        if root.data>data:
-            deleted,new_root_left=self.delete_helper(root.left,data)
-            root.left=new_root_left
-            return deleted,root
-        if root.left==None and root.right==None:
+        if root.data < data:
+            deleted, new_right_node= self.delete_helper(root.right, data)
+            root.right= new_right_node
+            return deleted, root
+        if root.data> data:
+            deleted, new_left_node=self.delete_helper(root.left, data)
+            root.left= new_left_node
+            return deleted, root
+
+        #root is leaf
+        if root.left == None and root.right == None:
             return True,None
+
+        #root has one right child
         if root.left==None:
             return True,root.right
+
+        #root has one left child
         if root.right==None:
             return True,root.left
-        replacement=self.min(root.right)
+
+        #root has two children
+        replacement= self.min(root.right)
         root.data=replacement
-        deleted,new_right_node=self.delete_helper(root.right,replacement)
-        root.right=new_right_node
-        return True,root
+        deleted, new_right_node = self.delete_helper(root.right, replacement)
+        root.right = new_right_node
+        return deleted, root
 
     def delete_data(self,data):
-        deleted,new_root= self.delete_helper(self.root,data)
+        deleted,new_root = self.delete_helper(self.root,data)
         if deleted:
             self.numNodes-=1
-        self.root=new_root
+        self.root = new_root
         return deleted
     def count(self):
-        return 0
+        return self.numNodes
 
 def Binary_Search_Tree (root, k):
     if root == None:
@@ -224,15 +241,16 @@ def print_detailed_tree(root):
 # print_detailed_tree(root)
 # print(check_BST(root))
 # print(check_BST2(root))
-# b=BST()
-# b.insert(10)
-# b.insert(5)
-# b.insert(12)
-# print(b.isPresent(10))
-# print(b.isPresent(7))
-# print(b.delete_data(4))
-# print(b.delete_data(10))
-# print(b.count())
-# b.print_Tree()
+b=BST()
+b.insert(10)
+b.insert(5)
+b.insert(7)
+b.insert(6)
+b.insert(8)
+b.insert(12)
+b.insert(11)
+b.insert(15)
+b.print_Tree()
+print(b.count())
 
 
