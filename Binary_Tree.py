@@ -191,7 +191,7 @@ def is_Balanced(root):
         return False
 
 def getHeight_and_CheckBalanced(root):
-    if root==None:
+    if root == None:
         return 0,True
     lh,is_left_balanced=getHeight_and_CheckBalanced(root.leftC)
     rh,is_right_balanced=getHeight_and_CheckBalanced(root.rightC)
