@@ -7,3 +7,15 @@ print(a.items()) # it will get key:value pairs
 
 for i in a:
     print(i,a[i])
+
+for i in a.values():
+    print(i)
+
+print("list" in a) # to check if the key exist or not. It will return TRUE
+
+a["tuple"]=(1,2,3,4)  # To add another key in the dictionary a
+print(a)
+
+b={3:5,'the':4,2:100}
+a.update(b)  # This function will update dictionary a on the basis of b dict
+print(a) #{1: 2, 3: 5, 'list': [1, 23], 'dict': {1: 2}, 'tuple': (1, 2, 3, 4), 'the': 4, 2: 100}
