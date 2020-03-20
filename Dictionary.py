@@ -33,5 +33,5 @@ for w in words:
     d[w]=d.get(w,0)+1
 print(d)
 for w in d:
-    if d[w]==2:
+    if d[w] == 2:
         print(w)
