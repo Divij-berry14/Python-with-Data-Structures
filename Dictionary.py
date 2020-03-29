@@ -6,6 +6,7 @@ print(a.keys())
 print(a.values())
 print(a.items()) # it will get key:value pairs
 
+print("loop dic")
 for i in a:
     print(i,a[i])
 
@@ -35,3 +36,5 @@ print(d)
 for w in d:
     if d[w] == 2:
         print(w)
+
+
