@@ -27,7 +27,7 @@ del a[1]
 print(a)
 
 #Program to print words having frequency k
-s=" This is a word string having many many word"
+s= "This is a word string having many many word"
 words=s.split()
 d={}
 for w in words:
