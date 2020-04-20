@@ -24,11 +24,28 @@ s="rhbaasdndfsdskgbfefdbrsdfhuyatrjtcrtyytktjjt"
 # for i in s1:
 #     d1[i] = d1.get(i, 0) + 1
 # print(d1)
-p = 0
-for e in 'hackerrank':
-    if e in s[p:]:
-        print(e)
-        p = s.index(e,p) + 1
-    else:
-        print('NO')
-print("Yes")
+# p = 0
+# for e in 'hackerrank':
+#     if e in s[p:]:
+#         print(e)
+#         p = s.index(e,p) + 1
+#     else:
+#         print('NO')
+# print("Yes")
+
+t=int(input())
+for i in range(t):
+    n,q=map(int,input().split())
+    sum=0
+    c=0
+    for j in range(q):
+        f, d = map(int , input().split())
+        intial=abs(f-c)
+        final=abs(f-d)
+        c=d
+        sum=sum+intial+final
+
+    print(sum)
+
+
+
