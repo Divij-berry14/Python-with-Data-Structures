@@ -1,51 +1,42 @@
-# t=int(input())
-# for i in range(t):
-#     n,c,m=map(int, input().split())
-#     num_choc=n//c
-#     c = 0
-#     temp = 2
-#     while(True):
-#         if num_choc == m:
-#             print(num_choc + 1)
-#             break
-#         elif num_choc < m:
-#             print(num_choc)
-#             break
-#         if(temp>1):
-#             c = c + 1
-#             temp = num_choc - m-c
-#         else:
-#             final_choc = num_choc + m * c
-#             print(final_choc)
-#             break
-s="rhbaasdndfsdskgbfefdbrsdfhuyatrjtcrtyytktjjt"
-# s1 = s
-# d1 = {}
-# for i in s1:
-#     d1[i] = d1.get(i, 0) + 1
-# print(d1)
-# p = 0
-# for e in 'hackerrank':
-#     if e in s[p:]:
-#         print(e)
-#         p = s.index(e,p) + 1
-#     else:
-#         print('NO')
-# print("Yes")
-
 t=int(input())
 for i in range(t):
-    n,q=map(int,input().split())
-    sum=0
-    c=0
-    for j in range(q):
-        f, d = map(int , input().split())
-        intial=abs(f-c)
-        final=abs(f-d)
-        c=d
-        sum=sum+intial+final
+    n,s=map(int,input().split())
+    price=[int(x) for x in input().split()]
+    players=[int(y) for y in input().split()]
+    min_n=min(price)
+    index=price.index(min_n)
+    price.remove(min_n)
+    players.pop(index)
+    for j in range(len(price)):
+        if players[index]==0:
+            if players[j]==1:
+                if s+min_n+price[j]<100:
+                    flag=1
+                    break
+                else:
+                    flag=0
+            else:
+                flag=0
+        else:
+            if players[j]==0:
+                if s+min_n+price[j]<100:
+                    flag=1
+                    break
+                else:
+                    flag=0
+            else:
+                flag=0
+    if flag==1:
+        print("yes")
+    else:
+        print("no")
 
-    print(sum)
+
+
+
+
+
+
 
 
 
