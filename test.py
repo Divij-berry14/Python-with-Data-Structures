@@ -22,6 +22,7 @@ class Loan:
         serial_number = 0
         Principal_remaining=Total_Amount_Payable
         year=2020
+        principal=amount/12
         for i in range(time):
             serial_number+=1
             index=index+1
