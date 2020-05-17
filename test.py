@@ -46,3 +46,8 @@ time=int(input())
 today=date.today()
 s=Loan()
 s.loan_system(amount,time,today)
+
+
+
+
+
