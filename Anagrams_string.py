@@ -33,6 +33,6 @@ def search(pat, txt):
 
 
 
-txt = "aaaaaaaaaa"
+txt = "aaaaaaa"
 pat = "aaaaaaaaaaaaa"
 search(pat, txt)
