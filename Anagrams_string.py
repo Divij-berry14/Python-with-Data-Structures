@@ -34,5 +34,5 @@ def search(pat, txt):
 
 
 txt = "aaaaaaa"
-pat = "aaaaaaaaaaaaa"
+pat = "aaaaaaaaaaa"
 search(pat, txt)
