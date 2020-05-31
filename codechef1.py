@@ -1,11 +1,31 @@
-t = int(input())
-for i in range(t):
-    n=int(input())
-    sum=0
-    li1=[int(x) for x in input().split()]
-    li2=[int(y) for y in input().split()]
-    for i in range(len(li1)):
-        if li1[i]==li2[i]:
-            sum=sum+li1[i]
-    print(sum)
+import math
+def kClosest(points, K):
+    points.sort()
+    print(points)
+    li = []
+    s = 0
+    min=-1
+    if k==1:
+        li.append(points[0])
+        return li
+    a=points[0][0]**2+points[0][1]**2
+    min=math.sqrt(a)
+    s=s+1
+    li.append(points[0])
+    for i in range(1,len(points)):
+        a = points[i][0]**2 + points[i][1]**2
+        # print(a)
+        if math.sqrt(a) <= min and s<K:
+            li.append(points[i])
+            s = s + 1
+            if s == K:
+                break
+            else:
+                min=a
+    del points
+    return li
 
+li=[[-5,4],[-6,-5],[4,6]]
+k=2
+res=kClosest(li,k)
+print(res)
