@@ -3,7 +3,7 @@ from datetime import date
 
 class Loan:
     def loan_system(self,amount,time,date):
-        month=["Januray","Feburary","March","April","May","June","July","August","September","October","November","December"]
+        month=["Januray","feburary","March","April","May","June","July","August","September","October","November","December"]
         date=str(date)
         date_num=date.split("-")[-1]
         # print(date_num)
