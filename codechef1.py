@@ -25,7 +25,7 @@ def kClosest(points, K):
     del points
     return li
 
-li=[[-5,4],[-6,-2],[4,6]]
+li=[[-5,4],[-6,-2],[4,8]]
 k=2
 res=kClosest(li,k)
 print(res)
