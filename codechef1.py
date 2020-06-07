@@ -24,32 +24,64 @@
 #         else:
 #             i += 1
 #     print(x)
+# t = int(input())
+# for _ in range(t):
+#     n=int(input())
+#     li=[int(x) for x in input().split()]
+#     flag=0
+#     if li[0] == 5:
+#         # sum = 5
+#         # fiveCount=li.count(5)
+#         # print(fiveCount)
+#         fiveCount=1
+#         tenCount=0
+#         fi5teenCount=0
+#         for i in range(1, len(li)):
+#             if li[i] != 5:
+#                 s = li[i]-5
+#                 moneyBack = s//5
+#                 if moneyBack <= fiveCount:
+#                     fiveCount = fiveCount - moneyBack
+#                     flag = 1
+#                 else:
+#                     flag = 0
+#                     # print("NO")
+#                     # break
+#             else:
+#                 fiveCount += 1
+#         if flag == 1:
+#             print("YES")
+#         else:
+#             print("NO")
+#     else:
+#         print("NO")
 t = int(input())
 for _ in range(t):
-    n=int(input())
-    li=[int(x) for x in input().split()]
-    flag=0
-    if li[0] == 5:
-        # sum = 5
-        # fiveCount=li.count(5)
-        # print(fiveCount)
-        fiveCount=1
-        for i in range(1, len(li)):
-            if li[i] != 5:
-                s = li[i]-5
-                moneyBack = s//5
-                if moneyBack <= fiveCount:
-                    fiveCount = fiveCount - moneyBack
-                    flag = 1
-                else:
-                    flag = 0
-                    # print("NO")
-                    # break
-            else:
-                fiveCount += 1
-        if flag == 1:
-            print("YES")
-        else:
-            print("NO")
-    else:
+    n = int(input())
+    li = list(map(int,input().split()))
+    curr,flag = li[0],0
+    if(curr != 5):
         print("NO")
+        continue
+    money = [1,0]
+    for i in range(1,len(li)):
+        if(li[i] == 5):
+            money[0]+=1
+        elif(li[i] == 10):
+            if(money[0] != 0):
+                money[0]-=1
+            else:
+                flag = 1
+                break
+        elif(li[i] == 15):
+            if(money[1] != 0):
+                money[1]-=1
+            elif(money[0] >= 2):
+                money[0]-=2
+            else:
+                flag = 1
+                break
+    if(flag == 1):
+        print("NO")
+    else:
+        print("YES")
