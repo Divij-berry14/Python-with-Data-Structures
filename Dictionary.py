@@ -2,8 +2,8 @@
 # print(a[1])
 # print(a.get("list"))
 # print(a.get("li", 0)) # If the key is not present then it will return 0. Use of get will not show runtime error
-# print(a.keys())
-# print(a.values())
+# print(a.keys())   #return all the keys
+# print(a.values())   #return all the values
 # print(a.items()) # it will get key:value pairs
 #
 # print("loop dic")
@@ -11,6 +11,8 @@
 #     print(i,a[i])
 #
 # for i in a.values():
+#     print(i)
+# for i in a.keys():
 #     print(i)
 #
 # print("list" in a) # to check if the key exist or not. It will return TRUE
@@ -36,101 +38,12 @@
 # for w in d:
 #     if d[w] == 2:
 #         print(w)
-#
-# def checkMagazine(magazine, note):
-#     dm={}
-#     dn={}
-#     for w in magazine:
-#         dm[w]=dm.get(w,0)+1
-#     for w in note:
-#         dn[w]=dn.get(w,0)+1
-#     for w in dn:
-#         if w in dm and dn[w]<=dm[w]:
-#             flag=1
-#         else:
-#             flag=0
-#             break
-#     print(dm)
-#     print(dn)
-#     if flag==1:
-#         print("Yes")
-#     else:
-#         print("No")
-#
-# mn = input().split()
-# m = int(mn[0])
-# n = int(mn[1])
-# magazine = input().rstrip().split()
-# note = input().rstrip().split()
-# checkMagazine(magazine, note)
 
-# def numJewelsInStones(J,S):
-#     d1 = {}
-#     d2 = {}
-#     for i in J:
-#         d1[i] = d1.get(i, 0) + 1
-#     for j in S:
-#         d2[j] = d2.get(j, 0) + 1
-#     print(d1,d2)
-#     for w in d1:
-#         if w in d2:
-#             if d1[w] == d2[w]:
-#                 return "true"
-#             else:
-#                 return "false"
-#
-# S="aa"
-# J="aab"
-# res=numJewelsInStones(S,J)
-# print(res)
-s="fihjjjjei"
-j="hjibagacbhadfaefdjaeaebgi"
-# d1={}
-# d2={}
-# for i in s:
-#     d1[i] = d1.get(i, 0) + 1
-# for i in j:
-#     d2[i] = d2.get(i, 0) + 1
-#
-# # printing original dictionaries
-# print("The original dictionary 1 : " + str(d1))
-# print("The original dictionary 2 : " + str(d2))
+c=dict([("the",3),("a",2),("of",34)])
+print(c)
 
-# Using items() + <= operator
-# Check if one dictionary is subset of other
-# res = d1.items() <= d2.items()
-
-# printing result
-# print("Does dict2 lie in dict1 ? : " + str(res))
-# if len(ransomNote)==0:
-#     return True
-# else:
-#     return False
-# for i in s:
-#     if s.count(i)<=j.count(i):
-#         flag=1
-#     else:
-#         flag=0
-#         break
-# if flag==0:
-#     print("false")
-# else:
-#     print("true")
-li=[int(x) for x in input().split()]
-s=",".join(map(str,li))
-s=s.split(",")
-print(s)
-d={}
-for w in s:
-    d[w]=d.get(w,0)+1
+d=dict.fromkeys(["abc",4,"of"],1)
 print(d)
-max=0
-for w in d:
-    if max<d[w]:
-        max=d[w]
-        value=w
-print(value)
-
 
 
 
