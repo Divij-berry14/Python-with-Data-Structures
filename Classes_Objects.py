@@ -130,21 +130,59 @@
 # C4=Complex_Number(6,7)
 # C3.multiply(C4)
 # C3.print_Complex_Number()
-name="Mohan"
-class Person():
+# name="Mohan"
+# class Person():
+#
+#     # def __init__(self,name):
+#     #     self.name=name
+#     def printName(self,age):
+#         global name
+#         name="mo"
+#         a="Divij"
+#         # print(self.name)
+#         print(name)
+#         print(a)
+#         print(age)
+#     print(name)
+#
+# p=Person()
+# p.printName(12)
 
-    # def __init__(self,name):
-    #     self.name=name
-    def printName(self,age):
-        global name
-        name="mo"
-        a="Divij"
-        # print(self.name)
-        print(name)
-        print(a)
-        print(age)
-    print(name)
+class emp:
+    def __init__(self):
+        self.name = 'xyz'
+        self.salary = 4000     #instance variables
+        self.a=0
 
-p=Person()
-p.printName(12)
+    def show(self):
+        a=0
+        print(self.name)
+        print(self.salary)
 
+
+e1 = emp()
+print("Dictionary form :", vars(e1))   # vars()– This function displays the attribute of an instance in the form of an dictionary.
+print(dir(e1))  # dir()– This function displays more attributes than vars function,as it is not limited to instance.
+# It displays the class attributes as well. It also displays the attributes of its ancestor classes.
+
+class sampleclass:
+    count = 0  # class attribute
+
+    def increase(self):
+        sampleclass.count += 1
+
+
+# Calling increase() on an object
+s1 = sampleclass()
+s1.increase()
+print(s1.count)
+print("var",vars(s1))
+
+# Calling increase on one more
+# object
+s2 = sampleclass()
+s2.increase()
+print(s2.count)
+print("dir",dir(s2))
+
+print(sampleclass.count)
