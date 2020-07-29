@@ -148,41 +148,131 @@
 # p=Person()
 # p.printName(12)
 
-class emp:
+# class emp:
+#     def __init__(self):
+#         self.name = 'xyz'
+#         self.salary = 4000     #instance variables
+#         self.a=0
+#
+#     def show(self):
+#         a=0
+#         print(self.name)
+#         print(self.salary)
+#
+#
+# e1 = emp()
+# print("Dictionary form :", vars(e1))   # vars()– This function displays the attribute of an instance in the form of an dictionary.
+# print(dir(e1))  # dir()– This function displays more attributes than vars function,as it is not limited to instance.
+# # It displays the class attributes as well. It also displays the attributes of its ancestor classes.
+#
+# class sampleclass:
+#     count = 0  # class attribute
+#
+#     def increase(self):
+#         sampleclass.count += 1
+#
+#
+# # Calling increase() on an object
+# s1 = sampleclass()
+# s1.increase()
+# print(s1.count)
+# print("var",vars(s1))
+#
+# # Calling increase on one more
+# # object
+# s2 = sampleclass()
+# s2.increase()
+# print(s2.count)
+# print("dir",dir(s2))
+#
+# print(sampleclass.count)
+
+
+
+# Python code to demonstrate how parent constructors
+# are called.
+# parent class
+# class Person(object):
+#
+#     # __init__ is known as the constructor
+#     def __init__(self, name, idnumber):
+#         self.name = name
+#         self.idnumber = idnumber
+#
+#     def display(self):
+#         print(self.name)
+#         print(self.idnumber)
+#
+#     # child class
+#
+#
+# class Employee(Person):
+#     def __init__(self, name, idnumber, salary, post):
+#         self.salary = salary
+#         self.post = post
+#
+#         # invoking the __init__ of the parent class
+#         Person.__init__(self, name, idnumber)
+#
+#     # creation of an object variable or an instance
+#
+#
+# a = Employee('Rahul', 886012,123,"manager")
+#
+# # calling a function of the class Person using its instance
+# a.display()
+
+
+class A:
+    def __init__(self, n='Rahul'):
+        self.name = n
+
+
+class B(A):
+    def __init__(self, name,roll):
+        self.roll = roll
+        A.__init__(self,name)   #if this is not mentioned then error will be there
+                                 #AttributeError: 'B' object has no attribute 'name'
+object = B("divij",23)
+print(object.name)
+
+
+x=0
+class Fruit:
     def __init__(self):
-        self.name = 'xyz'
-        self.salary = 4000     #instance variables
-        self.a=0
+        global x
+        x=x+1
+        print("I am a fruit")
+    def print(self):
+        print("hi")
 
-    def show(self):
-        a=0
-        print(self.name)
-        print(self.salary)
+class Citrus(Fruit):
+    def __init__(self):
+        global x
+        x+=2
+        print("I am a citrus fruit",x)
+        print(x)
+        super().print()
+        # Fruit.__init__(self)
 
-
-e1 = emp()
-print("Dictionary form :", vars(e1))   # vars()– This function displays the attribute of an instance in the form of an dictionary.
-print(dir(e1))  # dir()– This function displays more attributes than vars function,as it is not limited to instance.
-# It displays the class attributes as well. It also displays the attributes of its ancestor classes.
-
-class sampleclass:
-    count = 0  # class attribute
-
-    def increase(self):
-        sampleclass.count += 1
+lime=Citrus()
 
 
-# Calling increase() on an object
-s1 = sampleclass()
-s1.increase()
-print(s1.count)
-print("var",vars(s1))
+class C():
+    def __init__(self):
+        self.c = 21
 
-# Calling increase on one more
-# object
-s2 = sampleclass()
-s2.increase()
-print(s2.count)
-print("dir",dir(s2))
+        # d is private instance variable
+        self.__d = 42
 
-print(sampleclass.count)
+
+class D(C):
+    def __init__(self):
+        self.e = 84
+        C.__init__(self)
+
+
+object1 = D()
+
+# produces an error as d is private instance variable
+print(object1.d)
