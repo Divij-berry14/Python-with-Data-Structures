@@ -1,53 +1,33 @@
-from datetime import datetime
-from datetime import date
+# def countTriplets(arr, r):
+#     l = len(arr)
+#     count = 0
+#     m = {}
+#     for i in arr:
+#         m[i] = m.get(i, 0)+1
+#     for num in arr:
+#         temp=num*r
+#         if temp in m and temp*r in m:
+#             count=count+m[temp]*m[temp*r]
+#     return count
+def countTriplets(arr, r):
+    count = 0
+    dict = {}
+    dictPairs = {}
 
-class Loan:
-    def loan_system(self,amount,time,date):
-        month=["Januray","feburary","March","April","May","June","July","August","September","October","November","December"]
-        date=str(date)
-        date_num=date.split("-")[-1]
-        # print(date_num)
-        print("Loan Creation Date:",date)
-        print("Principal Amount:",amount)
-        print("Number of EMI's:",time)
-        rate=12
-        year=time/12
-        Total_Interest=(amount*rate*year)/100
-        EMI_month=Total_Interest/12
-        Total_Amount_Payable=amount+Total_Interest
-        print("EMI Details:")
-        today=datetime.now()
-        month_name=today.strftime("%B")
-        index = month.index(month_name)-1
-        serial_number = 0
-        Principal_remaining=Total_Amount_Payable
-        year=2020
-        principal=amount/12
-        for i in range(time):
-            serial_number+=1
-            index=index+1
-            EMI_month_name=month[index]
-            if EMI_month_name=="December":
-                index=-1
-                year=year+1
-            li = [date_num, EMI_month_name, year]
-            total_emi=principal+EMI_month
-            Principal_remaining=Principal_remaining-total_emi
-            EMI_Date="-".join(map(str,li))
-            print("EMI Number",serial_number,",","Principal EMI:",principal,",","Interest EMI=",EMI_month,
-                                              ",","Total EMI=",total_emi,",",
-                                            "EMI Date:",EMI_Date,",",
-                  "Principal Remaining:",Principal_remaining,end="\n")
+    for i in reversed(arr):
+        if i*r in dictPairs:
+            count += dictPairs[i*r]
+            print("count",count)
+        if i*r in dict:
+            dictPairs[i] = dictPairs.get(i, 0) + dict[i*r]
+            print("dictP",dictPairs)
 
-print("Enter Loan Amount:",end=" ")
-amount=int(input())
-print("Enter number of months:",end=" ")
-time=int(input())
-today=date.today()
-s=Loan()
-s.loan_system(amount,time,today)
+        dict[i] = dict.get(i, 0) + 1
+        print("dict",dict)
 
+    return count
 
-
-
-
+# arr=[int(x) for x in input().split()]
+arr=[1,2,1,2,4]
+res=countTriplets(arr, 2)
+print(res)
