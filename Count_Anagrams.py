@@ -25,5 +25,5 @@ def countOfAnagramSubstring(s):
     return anas
 
 
-s = "xxyy"
+s = "xyyx"
 print(countOfAnagramSubstring(s))
