@@ -1,9 +1,10 @@
-# a=[1,5,7,9,9,1]
-# b=a[0]
-# x=0
-# for x in range(1,len(a)):
-#     if a[x]>b:
-#         b=a[x]
-#         b=x
-# print(b)
-g
+def cap(word):
+    return word[1:].islower() or word.islower() or word.isupper()
+
+
+
+
+
+s=input()
+res=cap(s)
+print(res)
