@@ -1,3 +1,7 @@
+#PreOrder--> root,left,right
+#PostOrder--> left,right,root
+#Inorder--> left, root, right
+
 import queue
 class Binary_Tree_Node:
     def __init__(self,data):
