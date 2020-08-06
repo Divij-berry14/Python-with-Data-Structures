@@ -8,7 +8,7 @@ class Trie:
     def __init__(self):
         self.root=TrieNode(None)
 
-    def insert(self,word):
+    def insert(self,word):           #O(m)
         parent = self.root
         for i,char in enumerate(word):
             if char not in parent.children:
@@ -17,7 +17,7 @@ class Trie:
             if i == len(word)-1:
                 parent.IsEnd = True
 
-    def search(self,word):
+    def search(self,word):    #O(m)
         parent=self.root
         for char in word:
             if char not in parent.children:
@@ -32,6 +32,7 @@ class Trie:
                 return False
             parent=parent.children[char]
         return True
+
 
 ob1 = Trie()
 ob1.insert("apple")
