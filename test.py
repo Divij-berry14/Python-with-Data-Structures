@@ -5,12 +5,71 @@ class BinaryTreeNode:
         self.right = None
 
 def numberOfNodes(root):
-    if root==None:
+    if root == None:
         return 0
-    leftC=numberOfNodes(root.left)
-    rightC=numberOfNodes(root.right)
+    leftC = numberOfNodes(root.left)
+    rightC = numberOfNodes(root.right)
     return 1+ leftC+rightC
 
+def LargestNode(root):
+    if root == None:
+        return -1
+    leftS = LargestNode(root.left)
+    rightS = LargestNode(root.right)
+    res = max(leftS, rightS, root.data)
+    return res
+
+def HeightTree(root):
+    if root == None:
+        return 0
+    leftH=HeightTree(root.left)
+    rightH=HeightTree(root.right)
+    return max(leftH, rightH)+1
+
+def NumofLeafNodes(root):
+    if root==None:
+        return 0
+    if root.left==None and root.right==None:
+        return 1
+    leftS=NumofLeafNodes(root.left)
+    rightS=NumofLeafNodes(root.right)
+    return leftS + rightS
+
+def PrintDepthK(root,k):
+    if root==None:
+        return
+    if k==0:
+        print(root.data)
+        return
+    PrintDepthK(root.left,k-1)
+    PrintDepthK(root.right,k-1)
+
+def NodesGreater(root,k):
+    if root == None:
+        return 0
+    c=0
+    if root.data>k:
+        c=c+1
+    c=c+NodesGreater(root.left,k)
+    c=c+NodesGreater(root.right,k)
+    return c
+
+def checkNodePresent(root,k):
+    if root==None:
+        return
+    if root.data==k:
+        return True
+    if checkNodePresent(root.left,k):
+        return True
+    if checkNodePresent(root.right,k):
+        return True
+    return False
+
+def NodeswithoutSibling(root):
+    if root==None:
+        return 0
+    if root.left==None and root.right!=None or root.left!=None and root.right==None:
+        pass
 def printTree(root):
     if root == None:
         return
@@ -60,6 +119,13 @@ btn2.left = btn4
 # printTree(btn1)
 root=InputTree()
 # printDetailTree(btn1)
-printDetailTree(root)
-print("Number of Nodes",numberOfNodes(root))
-printPostOrder(root)
+# printDetailTree(root)
+# print("Number of Nodes",numberOfNodes(root))
+# # printPostOrder(root)
+# print("largest Node",LargestNode(root))
+# print("Height of the Tree",HeightTree(root))
+# print("Number of Leaf Nodes in Binary Tree",NumofLeafNodes(root))
+# PrintDepthK(root,2)
+# print(NodesGreater(root,8))
+print(checkNodePresent(root,2))
+
