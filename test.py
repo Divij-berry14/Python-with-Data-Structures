@@ -68,8 +68,17 @@ def checkNodePresent(root,k):
 def NodeswithoutSibling(root):
     if root==None:
         return 0
-    if root.left==None and root.right!=None or root.left!=None and root.right==None:
-        pass
+    if root.left==None and root.right!=None:
+        print(root.right.data)
+        NodeswithoutSibling(root.right)
+        return
+    if root.left!=None and root.right==None:
+        print(root.left.data)
+        NodeswithoutSibling(root.left)
+        return
+    NodeswithoutSibling(root.left)
+    NodeswithoutSibling(root.right)
+
 def printTree(root):
     if root == None:
         return
@@ -119,7 +128,7 @@ btn2.left = btn4
 # printTree(btn1)
 root=InputTree()
 # printDetailTree(btn1)
-# printDetailTree(root)
+printDetailTree(root)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
@@ -128,4 +137,5 @@ root=InputTree()
 # PrintDepthK(root,2)
 # print(NodesGreater(root,8))
 print(checkNodePresent(root,2))
+NodeswithoutSibling(root)
 
