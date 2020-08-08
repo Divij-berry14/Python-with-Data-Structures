@@ -79,6 +79,22 @@ def NodeswithoutSibling(root):
     NodeswithoutSibling(root.left)
     NodeswithoutSibling(root.right)
 
+
+def pathSum(root, sum):
+    def path_a(root, sum):
+        res = 0
+        if root == None:
+            return 0
+        if root.data == sum:
+            res += 1
+        res = res + path_a(root.left, sum - root.data)
+        res = res + path_a(root.right, sum - root.data)
+        return res
+
+    if root == None:
+        return 0
+    return pathSum(root.left, sum) + path_a(root, sum) + pathSum(root.right, sum)
+
 def printTree(root):
     if root == None:
         return
@@ -128,7 +144,7 @@ btn2.left = btn4
 # printTree(btn1)
 root=InputTree()
 # printDetailTree(btn1)
-printDetailTree(root)
+# printDetailTree(root)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
@@ -136,6 +152,7 @@ printDetailTree(root)
 # print("Number of Leaf Nodes in Binary Tree",NumofLeafNodes(root))
 # PrintDepthK(root,2)
 # print(NodesGreater(root,8))
-print(checkNodePresent(root,2))
-NodeswithoutSibling(root)
+# print(checkNodePresent(root,2))
+# NodeswithoutSibling(root)
+print(pathSum(root,8))
 
