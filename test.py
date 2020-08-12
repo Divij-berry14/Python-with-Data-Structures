@@ -152,6 +152,20 @@ def DiameterBT(root):
     print("d",d)
     return max(leftD, rightD, d)
 
+def MinimumDepth(root):
+    if root == None:
+        return 0
+    # if root.left ==None and root.right ==None:
+    #     return 1
+    if root.left is None:
+        return MinimumDepth(root.right)+1
+    if root.right is None:
+        return MinimumDepth(root.left)+1
+    leftH = MinimumDepth(root.left)
+    rightH = MinimumDepth(root.right)
+    res = min(leftH, rightH)+1
+    return res
+
 def printTree(root):
     if root == None:
         return
@@ -215,5 +229,6 @@ root=InputTree()
 # printDetailTree(root)
 # print(CheckBalancedTree(root))
 # print(CheckBalancedBTimproved(root))
-print(DiameterBT(root))
+# print(DiameterBT(root))
+print(MinimumDepth(root))
 
