@@ -1,19 +1,19 @@
-s=input()
-l=len(s)
-if l>1:
-    num=0
-    temp=l
-    for i in range(l-1):
-        temp1=ord(s[i])-64
-        # print("temp1",temp1)
-        num=num+temp1*26**(temp-1)
-        # print("num",num)
-        temp=temp-1
-        # print("temp",temp)
-    temp = s[-1]
-    res = num + ord(temp)-64
-    print(res)
-else:
-    print(ord(s)-64)
+def hIndex(citations):
+    n = len(citations)
+    l, r = 0, n - 1
+    while (l <= r):
+        mid = int(l + (r - l) / 2)
+        print("mid",mid)
+        if citations[mid] < n - mid:
+            l = mid + 1
+            print("l",l)
+        else:
+            r = mid - 1
+            print("r",r)
+    return n - l
+
+li = [int(x) for x in input().split()]
+print(hIndex(li))
+
 
 

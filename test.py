@@ -95,6 +95,63 @@ def pathSum(root, sum):
         return 0
     return pathSum(root.left, sum) + path_a(root, sum) + pathSum(root.right, sum)
 
+def RemoveLeafNodes(root):
+    if root == None:
+        return None
+    if root.left == None and root.right == None:
+        return None
+    root.left = RemoveLeafNodes(root.left)
+    root.right = RemoveLeafNodes(root.right)
+    return root
+
+def MirrorBT(root):
+    if root == None:
+        return  None
+    left = root.left
+    root.left = root.right
+    root.right = left
+    MirrorBT(root.left)
+    MirrorBT(root.right)
+    return root
+
+def CheckBalancedTree(root):
+    if root == None:
+        return True
+    leftH = HeightTree(root.left)
+    rightH = HeightTree(root.right)
+    if abs(leftH-rightH) > 1:
+        return False
+    left = CheckBalancedTree(root.left)
+    right = CheckBalancedTree(root.right)
+    if left and right:
+        return True
+    else:
+        return False
+
+def CheckBalancedBTimproved(root):
+    if root == None:
+        return 0, True
+    lh, isLeftBalanced = CheckBalancedBTimproved(root.left)
+    rh, isRightBalanced = CheckBalancedBTimproved(root.right)
+    h = 1 + max(lh,rh)
+    if abs(lh-rh)>1:
+        return h, True
+    if isLeftBalanced and isRightBalanced:
+        return h,True
+    else:
+        h, False
+
+def DiameterBT(root):
+    if root == None:
+        return 0
+    leftD = DiameterBT(root.left)
+    rightD = DiameterBT(root.right)
+    print(leftD,rightD)
+    printDetailTree(root)
+    d = HeightTree(root.left) + HeightTree(root.right)
+    print("d",d)
+    return max(leftD, rightD, d)
+
 def printTree(root):
     if root == None:
         return
@@ -154,5 +211,9 @@ root=InputTree()
 # print(NodesGreater(root,8))
 # print(checkNodePresent(root,2))
 # NodeswithoutSibling(root)
-print(pathSum(root,8))
+# root = MirrorBT(root)
+# printDetailTree(root)
+# print(CheckBalancedTree(root))
+# print(CheckBalancedBTimproved(root))
+print(DiameterBT(root))
 

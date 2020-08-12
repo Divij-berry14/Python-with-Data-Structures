@@ -103,7 +103,7 @@ def Tree_input(): #USER_INPUT
     root.rightC=rightTree
     return root
 
-def num_Nodes(root):
+def num_Nodes(root):  # Time Complexity-->O(n)
     if root==None:
         return 0
     leftCount=num_Nodes(root.leftC)
@@ -162,7 +162,7 @@ def print_Nodes_At_DepthK(root,k):
     print_Nodes_At_DepthK(root.leftC,k-1)
     print_Nodes_At_DepthK(root.rightC,k-1)
 
-def print_Nodes_At_DepthK_V2(root,k,depth=0):
+def print_Nodes_At_DepthK_V2(root,k,depth=0):   #O(n)
     if root==None:
         return
     if k==depth:
@@ -181,6 +181,9 @@ def Remove_Leaf_Nodes(root):
     return root
 
 def is_Balanced(root):
+#The time complexity in best case is O(nlogn)-->N=number of nodes and logn->Height of tree
+#Also, in worst case the time complexity can be O(n^2) when if the binary tree has nodes all in one side.Then n is
+#number of nodes and height will also be number of nodes. Here the operation og getting height is on every node.
     if root==None:
         return True
     left_height=height(root.leftC)
