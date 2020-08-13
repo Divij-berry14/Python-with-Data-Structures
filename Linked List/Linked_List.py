@@ -1,12 +1,12 @@
 class Node:
-    def __init__(self,data):
-        self.data=data;
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
     
     
-a=Node(12)
-b=Node(17)
-a.next=b
+a = Node(12)
+b = Node(17)
+a.next = b
 print(a)
 print(a.next)
 print(a.data)
@@ -21,7 +21,7 @@ class Node:
         self.next = None
 def printLL(head):
     while head is not None:
-        print(head.data,end=" ")
+        print(head.data, end=" ")
         head = head.next
 
 
