@@ -103,10 +103,80 @@ def RemoveDuplicatesLL(head):
             curr = curr.next
     return head
 
+def ReverseLL(head):
+    if head is None:
+        return None
+    curr = head
+    prev = None
+    while curr is not None:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    return prev
+
+def PalindromeLL(head):
+    if head is None:
+        return True
+    s = []
+    while head is not None:
+        s.append(head.data)
+        head = head.next
+    left = 0
+    right = len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left = left + 1
+        right = right - 1
+    return True
+
+def ReverseLLII(head, m, n):
+    start, prev, node, count = None, None, head, 1
+    while count <= n:
+        nextNode = node.next
+        if count == m:
+            start = prev
+        elif count > m:
+            node.next = prev
+        prev, node = node, nextNode
+        count += 1
+
+    if start:
+        start.next.next = node
+        start.next = prev
+    else:
+        head.next = node
+        head = prev
+    return head
+    # if head is None:
+    #     return None
+    # curr1 = head
+    # prev = None
+    # i = 1
+    # j = m - 1
+    # while curr1 is not None:
+    #     if i == n:
+    #         tempHead = curr1
+    #         break
+    #     else:
+    #         curr1 = curr1.next
+    #         i += 1
+    #
+    # while tempHead is not None:
+    #     if j > 0:
+    #         temp = tempHead.next
+    #         tempHead.next = prev
+    #         prev = tempHead
+    #         tempHead = temp
+    #         j -= 1
+    # curr1.next = prev
+    # return head
+
 def printLL(head):
     count = 0
     while head is not None:
-        print(head.data,"->",end=" ")
+        print(head.data, "->", end=" ")
         head = head.next
     print("None")
 
@@ -139,5 +209,10 @@ printLL(head)
 # printLL(head)
 # head = AppendLastToFirst(head,4)
 # printLL(head)
-head = RemoveDuplicatesLL(head)
+# head = RemoveDuplicatesLL(head)
+# printLL(head)
+# head = ReverseLL(head)
+# printLL(head)
+# print(PalindromeLL(head))
+head = ReverseLLII(head,2,3)
 printLL(head)

@@ -37,12 +37,11 @@ def del_ith_rec(head,i):
     if i==0:
         p=curr.next
         return p
-    
-    
     smallhead=del_ith_rec(head.next,i-1)
     head.next=smallhead
     return head
-        
+
+
 
 
 def inputLL():
@@ -57,14 +56,16 @@ def inputLL():
             head=newNode
             tail=newNode
         else:
-            tail.next=newNode
-            tail=newNode
+            tail.next = newNode
+            tail = newNode
     return head
 
 
 head=inputLL()
 printLL(head)
-insert_ith_LL(head,3)
-printLL(head)
-del_ith_rec(head,2)
+# insert_ith_LL(head,3)
+# printLL(head)
+# del_ith_rec(head,2)
+# printLL(head)
+head = ReverseLLII(head,2,5)
 printLL(head)
