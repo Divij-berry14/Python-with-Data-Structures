@@ -79,3 +79,50 @@ def my_fun(*args):
 # another way of using decorators
 # decorator_func(12, 15)(my_fun)('Geeks', 'for', 'Geeks')
 my_fun('Geeks', 'for', 'Geeks')
+
+
+#Decoration on method
+def check_name(method):
+    def inner(name_ref):
+        if name_ref.name == "Divij":
+            print("Hey, my name is also same")
+        else:
+            method(name_ref)
+    return inner
+
+class Priting:
+    def __init__(self, name):
+        self.name = name
+
+    @check_name
+    def __call__(self, *args, **kwargs):
+        print("Entered name is", self.name)
+
+
+p = Priting("Divij")
+print(p())  #calling object as a function
+
+
+#CLASS BASED DECORATORS
+class Check_divDeco:
+    def __init__(self,func):
+        self.func = func
+    def __call__(self, *args, **kwargs):
+        list1 = []
+        list1 = args[1:]
+        for i in list1:
+            if i == 0:
+                return "Given input is not valid"
+            else:
+                self.func(*args, **kwargs)
+
+@Check_divDeco
+def div(a, b):
+    return a/b
+
+@Check_divDeco
+def div1(a, b, c):
+    return a/b/c
+
+print(div(10, 0))
+print(div1(10, 0, 5))
