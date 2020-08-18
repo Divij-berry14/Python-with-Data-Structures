@@ -173,6 +173,118 @@ def ReverseLLII(head, m, n):
     # curr1.next = prev
     # return head
 
+def MidElementLL(head):
+    slow = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    print(str(slow.data))
+    return
+
+def merge_two_sorted_arrays(head1,head2):
+    if head1 and head2 is None:
+        return None
+    finalHead = None
+    finalTail = None
+    if head1. data > head2.data:
+        finalHead = head2
+        finalTail = head2
+        head2 = head2.next
+    else:
+        finalHead = head1
+        finalTail = head1
+        head1 = head1.next
+
+    while head1 is not None and head2 is not None:
+        if head1.data > head2.data:
+            finalTail.next = head2
+            finalTail = finalTail.next
+            head2 = head2.next
+        else:
+            finalTail.next = head1
+            finalTail = finalTail.next
+            head1 = head1.next
+
+    if head1 is not None:
+        finalTail.next = head1
+    if head2 is not None:
+        finalTail.next = head2
+
+    return finalHead
+
+def swapNodes(head, x, y):
+    if head is None:
+        return None
+    if x == y:
+        return head
+    currX = head
+    currY = head
+    prevX = None
+    prevY = None
+    while currX is not None and currX.data != x:
+        prevX = currX
+        currX = currX.next
+    while currY is not None and currY.data != y:
+        prevY = currY
+        currY = currY.next
+
+    if prevX!=None:
+        prevX.next = currY
+    else:
+        head = currY
+    if prevY!=None:
+        prevY.next = currX
+    else:
+        head = currX
+    temp = currX.next
+    currX.next = currY.next
+    currY.next = temp
+    return head
+
+def nextLargerNodes(head):
+    if head is None:
+        return None
+    temp = []
+    while head is not None:
+        temp.append(head.data)
+        head = head.next
+    res = []
+    for i in range(len(temp)):
+        j = i+1
+        while(j <= len(temp)-1):
+            if temp[j] < temp[i]:
+                j += 1
+            if j == len(temp)-1:
+                res.append(0)
+            else:
+                res.append(temp[j])
+                break
+    return res
+
+def OddEvenLL(head):
+    if head is None:
+        return None
+    curr = head
+    evenHead = None
+    evenTail = None
+    oddHead = None
+    oddTail = None
+    while curr is not None:
+        if curr.data % 2 ==0:
+            if evenHead is None:
+                evenHead = curr
+                evenTail = curr
+            else:
+                evenTail.next = curr
+                evenTail = curr
+        else:
+            if oddHead is None:
+                oddHead = curr
+                oddTail = curr
+            else:
+                oddTail.next = curr
+                oddTail = curr
 def printLL(head):
     count = 0
     while head is not None:
@@ -199,6 +311,7 @@ def InputLL():
     return head
 
 head = InputLL()
+# head2 =InputLL()
 printLL(head)
 # head = DeleteNode(head,3)
 # printLL(head)
@@ -214,5 +327,9 @@ printLL(head)
 # head = ReverseLL(head)
 # printLL(head)
 # print(PalindromeLL(head))
-head = ReverseLLII(head,2,3)
-printLL(head)
+# head = ReverseLLII(head,2,3)
+# printLL(head)
+# MidElementLL(head)
+# head = merge_two_sorted_arrays(head1, head2)
+# printLL(head)
+print(nextLargerNodes(head))
