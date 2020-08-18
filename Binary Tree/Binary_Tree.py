@@ -11,7 +11,7 @@ class Binary_Tree_Node:
         
 
 def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
-    if len(preOrder)==0:
+    if len(preOrder) == 0:
         return None
     rootData=preOrder[0]
     root=Binary_Tree_Node(rootData)

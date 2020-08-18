@@ -285,6 +285,38 @@ def OddEvenLL(head):
             else:
                 oddTail.next = curr
                 oddTail = curr
+        curr = curr.next
+    if oddHead is None:
+        return evenHead
+    oddTail.next = evenHead
+    evenTail.next = None
+    head = oddHead
+    return head
+
+def skipMdeleteN(head, m, n):
+    if head is None:
+        return None
+    if m == 0:
+        return head
+    if n < 0 or m < 0:
+        return head
+    curr = head
+    newHead = None
+    while curr is not None:
+        for i in range(m-1):
+            if curr is None:
+                return head
+            curr = curr.next
+            # print(i)
+        prev = curr
+        curr = curr.next
+        for i in range(n):
+            if curr is None:
+                return head
+            curr = curr.next
+        prev.next = curr
+    return head
+
 def printLL(head):
     count = 0
     while head is not None:
@@ -332,4 +364,8 @@ printLL(head)
 # MidElementLL(head)
 # head = merge_two_sorted_arrays(head1, head2)
 # printLL(head)
-print(nextLargerNodes(head))
+# head = OddEvenLL(head)
+# printLL(head)
+head = skipMdeleteN(head, 2, 2)
+printLL(head)
+

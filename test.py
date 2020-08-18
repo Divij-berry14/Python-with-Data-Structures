@@ -133,11 +133,11 @@ def CheckBalancedBTimproved(root):
         return 0, True
     lh, isLeftBalanced = CheckBalancedBTimproved(root.left)
     rh, isRightBalanced = CheckBalancedBTimproved(root.right)
-    h = 1 + max(lh,rh)
-    if abs(lh-rh)>1:
+    h = 1 + max(lh, rh)
+    if abs(lh-rh) > 1:
         return h, True
     if isLeftBalanced and isRightBalanced:
-        return h,True
+        return h, True
     else:
         h, False
 
@@ -165,6 +165,29 @@ def MinimumDepth(root):
     rightH = MinimumDepth(root.right)
     res = min(leftH, rightH)+1
     return res
+
+def isUnivalTree(root):
+    if root is None:
+        return True
+    if root.left == None and root.right == None:
+        return True
+    if root.left == None:
+        if isUnivalTree(root.right) and root.right.data == root.data:
+            return True
+        else:
+            return False
+    if root.right == None:
+        if isUnivalTree(root.left) and root.left.data == root.data:
+            return True
+        else:
+            return False
+    if root.data != root.left.data or root.data != root.right.data:
+        return False
+    left = isUnivalTree(root.left)
+    right = isUnivalTree(root.right)
+    if left and right:
+        return True
+    return False
 
 def printTree(root):
     if root == None:
@@ -213,9 +236,9 @@ btn1.left = btn2
 btn1.right = btn3
 btn2.left = btn4
 # printTree(btn1)
-root=InputTree()
+root = InputTree()
 # printDetailTree(btn1)
-# printDetailTree(root)
+printDetailTree(root)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
@@ -230,5 +253,6 @@ root=InputTree()
 # print(CheckBalancedTree(root))
 # print(CheckBalancedBTimproved(root))
 # print(DiameterBT(root))
-print(MinimumDepth(root))
+# print(MinimumDepth(root))
+print(isUnivalTree(root))
 
