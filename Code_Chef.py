@@ -1,28 +1,10 @@
-string1 = input()
-string2 = input()
-k = int(input())
-res=""
-new_li=[]
-for i in range(len(string1)):
-    if ord(string1[i])+k>=ord("z"):
-        temp1 = ord("z")-ord(string1[i])
-        temp2 = ord(string2[i])
-        if abs(temp1 - temp2) <= k:
-            flag = True
-        else:
-            flag = False
-    else:
-        temp1 = ord(string1[i])
-        temp2 = ord(string2[i])
-        if abs(temp1 -temp2) <= k:
-            flag = True
-        else:
-            flag = False
+# import dis
+# print(dis.dis('for _ in [1,2,3]:pass'))
 
-if flag:
-    print("Yes")
-else:
-    print("No")
-
-
-
+# li = [5, 7,  22, 97, 54, 62, 77, 23, 73, 61]
+# res = filter(lambda x: (x%2 != 0), li)
+# for i in res:
+#     print(i)
+# print(list(res))
+print(list(map(lambda x:x%2==0,range(0,10))))
+print(list(filter(lambda x:x*2,range(0,10))))
