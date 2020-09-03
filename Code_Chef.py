@@ -6,5 +6,11 @@
 # for i in res:
 #     print(i)
 # print(list(res))
-print(list(map(lambda x:x%2==0,range(0,10))))
-print(list(filter(lambda x:x*2,range(0,10))))
+# print(list(map(lambda x:x%2==0,range(0,10))))
+# print(list(filter(lambda x:x*2,range(0,10))))
+def func(li):
+    li.append(8)
+
+li=[1,5]
+func(li)
+print(li)
