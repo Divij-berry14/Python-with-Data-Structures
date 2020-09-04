@@ -33,7 +33,7 @@ def KMPSearch(pat, txt):
 def computeLPSArray(pat, M, lps):
     len = 0  # length of the previous longest prefix suffix
 
-    lps[0]  # lps[0] is always 0
+    # lps[0]  # lps[0] is always 0
     i = 1
 
     # the loop calculates lps[i] for i = 1 to M-1
