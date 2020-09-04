@@ -23,9 +23,10 @@ class Graph:
         self.adjMatrix[v2][v1] = 0
 
     def containsEdge(self, v1, v2):
-        return True if self.adjMatrix[v1][v2]>0 else False
+        return True if self.adjMatrix[v1][v2] > 0 else False
 
-    def __str__(self):
+    def __str__(self): #Dunder methods-returns the object reprsentation when we print the object. Converts objects to strings
+        # print("__str__")
         return str(self.adjMatrix)
 
 g = Graph(5)
