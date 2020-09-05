@@ -4,7 +4,7 @@
 
 import queue
 class Binary_Tree_Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data=data
         self.leftC=None
         self.rightC=None
@@ -29,8 +29,8 @@ def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
     leftPreOrder=preOrder[1:lenLeftSubtree+1]
     rightPreOrder=preOrder[lenLeftSubtree+1:]
 
-    leftChild=Build_Tree_from_PreOrder_Inorder(leftPreOrder,leftInorder)
-    rightChild=Build_Tree_from_PreOrder_Inorder(rightPreOrder,rightInorder)
+    leftChild=Build_Tree_from_PreOrder_Inorder(leftPreOrder, leftInorder)
+    rightChild=Build_Tree_from_PreOrder_Inorder(rightPreOrder, rightInorder)
     root.leftC=leftChild
     root.rightC=rightChild
     return root
@@ -45,7 +45,7 @@ def level_wise_input():
     q.put(root)
     while(not(q.empty())):
         current_node=q.get()
-        print("Enter left child of",current_node.data)
+        print("Enter left child of", current_node.data)
         left_child_data = int(input())
         if left_child_data != -1:
             left_child = Binary_Tree_Node(left_child_data)
@@ -272,12 +272,12 @@ def Root_to_Node_Print(root, s):
 #
 # print("To check if the Binary Tree is Balanced or not and Height of the Bianry Tree/Improved Version:",getHeight_and_CheckBalanced(root))
 
-root=level_wise_input()
+root = level_wise_input()
 # print_level_wise_input(root)
 
 # preOrder=[1,2,4,5,3,6,7]
 # inOrder=[4,2,5,1,6,3,7]
 # root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
 print_Detailed_Tree(root)
-print(Root_to_Node_Print(root, 5))
+# print(Root_to_Node_Print(root, 5))
 

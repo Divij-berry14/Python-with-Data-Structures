@@ -1,8 +1,33 @@
+import queue
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
+
+def takeLevelWiseTreeInput():
+    q = queue.Queue
+    print("Enter root")
+    rootData = int(input())
+    if rootData == -1:
+        return None
+    root = BinaryTreeNode(rootData)
+    q.put(root)
+    while(not(q.empty())):
+        currentNode = q.get()
+        print("Enter left child of ", currentNode.data)
+        leftChildData = int(input())
+        if leftChildData != -1:
+            leftChild = BinaryTreeNode(currentNode.data)
+            currentNode.left = leftChild
+            q.put(leftChild)
+        print("Enter right child of", currentNode.data)
+        rightChildData = int(input())
+        if rightChildData != -1:
+            rightChild = BinaryTreeNode(rightChildData)
+            currentNode.right = rightChild
+            q.put(rightChild)
+    return root
 
 def numberOfNodes(root):
     if root == None:
@@ -189,6 +214,7 @@ def isUnivalTree(root):
         return True
     return False
 
+
 def printTree(root):
     if root == None:
         return
@@ -227,18 +253,18 @@ def InputTree():
     return root
 
 
-btn1 = BinaryTreeNode(1)
-btn2 = BinaryTreeNode(2)
-btn3 = BinaryTreeNode(3)
-btn4 = BinaryTreeNode(4)
-
-btn1.left = btn2
-btn1.right = btn3
-btn2.left = btn4
-# printTree(btn1)
-root = InputTree()
-# printDetailTree(btn1)
+# btn1 = BinaryTreeNode(1)
+# btn2 = BinaryTreeNode(2)
+# btn3 = BinaryTreeNode(3)
+# btn4 = BinaryTreeNode(4)
+root = takeLevelWiseTreeInput()
 printDetailTree(root)
+# btn1.left = btn2
+# btn1.right = btn3
+# btn2.left = btn4
+# printTree(btn1)
+# root = InputTree()
+# printDetailTree(root)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
@@ -254,5 +280,5 @@ printDetailTree(root)
 # print(CheckBalancedBTimproved(root))
 # print(DiameterBT(root))
 # print(MinimumDepth(root))
-print(isUnivalTree(root))
+# print(isUnivalTree(root))
 
