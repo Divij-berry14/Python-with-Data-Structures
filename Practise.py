@@ -20,19 +20,19 @@ def sum_nodes(root):
     return root.data+left_sum+right_sum
 
 def largest_node(root):
-    if root==None:
+    if root == None:
         return -1
-    l_left=largest_node(root.left)
-    l_right=largest_node(root.right)
-    result=max(root.data,l_left,l_right)
+    l_left = largest_node(root.left)
+    l_right = largest_node(root.right)
+    result = max(root.data, l_left, l_right)
     return result
 
 def height_tree(root):
     if root==None:
         return 0
-    left=height_tree(root.left)
-    right=height_tree(root.right)
-    return 1+max(left,right)
+    left = height_tree(root.left)
+    right = height_tree(root.right)
+    return 1+max(left, right)
 
 def leaf_nodes(root):
     if root==None:

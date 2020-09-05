@@ -92,14 +92,14 @@
 def printPairDiffK(l, k):
     m={}
     for i in l:
-        m[i]=m.get(i,0)+1
+        m[i]=m.get(i, 0)+1
     for num in l:
-        if num+k in m and m[num+k]>0:
+        if num+k in m and m[num+k] > 0:
             temp=m[num]
-            while(temp>0):
-                print(num,num+k)
-                temp-=1
-                flag1=True
+            while(temp > 0):
+                print(num, num+k)
+                temp -= 1
+                flag1 = True
         if k!=0 and num-k in m and m[num-k]>0:
             temp=m[num]
             while temp>0:
