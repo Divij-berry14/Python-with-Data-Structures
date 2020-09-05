@@ -5,30 +5,6 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-def takeLevelWiseTreeInput():
-    q = queue.Queue
-    print("Enter root")
-    rootData = int(input())
-    if rootData == -1:
-        return None
-    root = BinaryTreeNode(rootData)
-    q.put(root)
-    while(not(q.empty())):
-        currentNode = q.get()
-        print("Enter left child of ", currentNode.data)
-        leftChildData = int(input())
-        if leftChildData != -1:
-            leftChild = BinaryTreeNode(currentNode.data)
-            currentNode.left = leftChild
-            q.put(leftChild)
-        print("Enter right child of", currentNode.data)
-        rightChildData = int(input())
-        if rightChildData != -1:
-            rightChild = BinaryTreeNode(rightChildData)
-            currentNode.right = rightChild
-            q.put(rightChild)
-    return root
-
 def numberOfNodes(root):
     if root == None:
         return 0
@@ -215,6 +191,30 @@ def isUnivalTree(root):
     return False
 
 
+def takeLevelWiseTreeInput():
+    q = queue.Queue()
+    print("Enter root")
+    rootData = int(input())
+    if rootData == -1:
+        return None
+    root = BinaryTreeNode(rootData)
+    q.put(root)
+    while(not(q.empty())):
+        currentNode = q.get()
+        print("Enter left child of ", currentNode.data)
+        leftChildData = int(input())
+        if leftChildData != -1:
+            leftChild = BinaryTreeNode(currentNode.data)
+            currentNode.left = leftChild
+            q.put(leftChild)
+        print("Enter right child of", currentNode.data)
+        rightChildData = int(input())
+        if rightChildData != -1:
+            rightChild = BinaryTreeNode(rightChildData)
+            currentNode.right = rightChild
+            q.put(rightChild)
+    return root
+
 def printTree(root):
     if root == None:
         return
@@ -257,14 +257,15 @@ def InputTree():
 # btn2 = BinaryTreeNode(2)
 # btn3 = BinaryTreeNode(3)
 # btn4 = BinaryTreeNode(4)
-root = takeLevelWiseTreeInput()
-printDetailTree(root)
+#
 # btn1.left = btn2
 # btn1.right = btn3
 # btn2.left = btn4
 # printTree(btn1)
 # root = InputTree()
-# printDetailTree(root)
+# printDetailTree(btn1)
+root = takeLevelWiseTreeInput()
+printDetailTree(root)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))

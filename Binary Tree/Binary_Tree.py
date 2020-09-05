@@ -5,34 +5,34 @@
 import queue
 class Binary_Tree_Node:
     def __init__(self, data):
-        self.data=data
-        self.leftC=None
-        self.rightC=None
+        self.data = data
+        self.leftC = None
+        self.rightC = None
         
 
-def Build_Tree_from_PreOrder_Inorder(preOrder,inOrder):
+def Build_Tree_from_PreOrder_Inorder(preOrder, inOrder):
     if len(preOrder) == 0:
         return None
-    rootData=preOrder[0]
-    root=Binary_Tree_Node(rootData)
-    root_Index_Inorder=-1
-    for i in range(0,len(inOrder)):
-        if inOrder[i]==rootData:
-            root_Index_Inorder=i
+    rootData = preOrder[0]
+    root = Binary_Tree_Node(rootData)
+    root_Index_Inorder = -1
+    for i in range(0, len(inOrder)):
+        if inOrder[i] == rootData:
+            root_Index_Inorder = i
             break
-    if root_Index_Inorder==-1:
+    if root_Index_Inorder == -1:
         return None
-    leftInorder=inOrder[0:root_Index_Inorder]
-    rightInorder=inOrder[root_Index_Inorder+1:]
+    leftInorder = inOrder[0:root_Index_Inorder]
+    rightInorder = inOrder[root_Index_Inorder+1:]
 
-    lenLeftSubtree=len(leftInorder)
-    leftPreOrder=preOrder[1:lenLeftSubtree+1]
-    rightPreOrder=preOrder[lenLeftSubtree+1:]
+    lenLeftSubtree = len(leftInorder)
+    leftPreOrder = preOrder[1:lenLeftSubtree+1]
+    rightPreOrder = preOrder[lenLeftSubtree+1:]
 
-    leftChild=Build_Tree_from_PreOrder_Inorder(leftPreOrder, leftInorder)
-    rightChild=Build_Tree_from_PreOrder_Inorder(rightPreOrder, rightInorder)
-    root.leftC=leftChild
-    root.rightC=rightChild
+    leftChild = Build_Tree_from_PreOrder_Inorder(leftPreOrder, leftInorder)
+    rightChild = Build_Tree_from_PreOrder_Inorder(rightPreOrder, rightInorder)
+    root.leftC = leftChild
+    root.rightC = rightChild
     return root
 
 def level_wise_input():
@@ -44,7 +44,7 @@ def level_wise_input():
     root = Binary_Tree_Node(root_data)
     q.put(root)
     while(not(q.empty())):
-        current_node=q.get()
+        current_node = q.get()
         print("Enter left child of", current_node.data)
         left_child_data = int(input())
         if left_child_data != -1:
@@ -52,7 +52,7 @@ def level_wise_input():
             current_node.leftC = left_child
             q.put(left_child)
 
-        print("Enter right child of",current_node.data)
+        print("Enter right child of", current_node.data)
         right_child_data = int(input())
         if right_child_data != -1:
             right_child = Binary_Tree_Node(right_child_data)
@@ -81,13 +81,13 @@ def print_level_wise_input(root):
 
 
 def print_Detailed_Tree(root):
-    if root==None:
+    if root == None:
         return
-    print(root.data,end=":")
-    if root.leftC!=None:
-        print("L",root.leftC.data,end=',')
+    print(root.data, end=":")
+    if root.leftC != None:
+        print("L", root.leftC.data, end=',')
     if root.rightC!=None:
-        print("R",root.rightC.data,end='')
+        print("R", root.rightC.data, end='')
     print()
     print_Detailed_Tree(root.leftC)
     print_Detailed_Tree(root.rightC)
@@ -104,32 +104,32 @@ def Tree_input(): #USER_INPUT
     return root
 
 def num_Nodes(root):  # Time Complexity-->O(n)
-    if root==None:
+    if root == None:
         return 0
-    leftCount=num_Nodes(root.leftC)
-    rightCount=num_Nodes(root.rightC)
+    leftCount = num_Nodes(root.leftC)
+    rightCount = num_Nodes(root.rightC)
     return 1+leftCount+rightCount
 
 def Largest_Node(root):
-    if root==None:
+    if root == None:
         return -1
-    leftLargest=Largest_Node(root.leftC)
-    rightLargest=Largest_Node(root.rightC)
-    largest=max(leftLargest,rightLargest,root.data)
+    leftLargest = Largest_Node(root.leftC)
+    rightLargest = Largest_Node(root.rightC)
+    largest=max(leftLargest, rightLargest, root.data)
     return largest
 
 def countNodesGreaterThanX(root, x):
-    if root==None:
+    if root == None:
         return 0
-    result=0
+    result = 0
     if root.data > x:
-        result+=1
-    result= result+countNodesGreaterThanX(root.leftC, x)
-    result= result+countNodesGreaterThanX(root.rightC, x)
+        result += 1
+    result = result+countNodesGreaterThanX(root.leftC, x)
+    result = result+countNodesGreaterThanX(root.rightC, x)
     return result
 
 def height(root):
-    if root==None:
+    if root == None:
         return 0
     leftTree = height(root.leftC)
     rightTree = height(root.rightC)
@@ -147,51 +147,51 @@ def diameter_tree(root):
 def number_of_leaf_Nodes(root):
     if root is None:
         return 0
-    if root.leftC==None and root.rightC==None:
+    if root.leftC == None and root.rightC == None:
         return 1
-    numLeftTree=number_of_leaf_Nodes(root.leftC)
-    numRightTree=number_of_leaf_Nodes(root.rightC)
+    numLeftTree = number_of_leaf_Nodes(root.leftC)
+    numRightTree = number_of_leaf_Nodes(root.rightC)
     return numLeftTree+numRightTree
 
-def print_Nodes_At_DepthK(root,k):
+def print_Nodes_At_DepthK(root, k):
     if root is None:
         return
-    if k==0:
+    if k == 0:
         print(root.data)
         return
-    print_Nodes_At_DepthK(root.leftC,k-1)
-    print_Nodes_At_DepthK(root.rightC,k-1)
+    print_Nodes_At_DepthK(root.leftC, k-1)
+    print_Nodes_At_DepthK(root.rightC, k-1)
 
-def print_Nodes_At_DepthK_V2(root,k,depth=0):   #O(n)
-    if root==None:
+def print_Nodes_At_DepthK_V2(root, k, depth=0):   #O(n)
+    if root == None:
         return
-    if k==depth:
+    if k == depth:
         print(root.data)
         return
-    print_Nodes_At_DepthK_V2(root.leftC,k,depth+1)
-    print_Nodes_At_DepthK_V2(root.rightC,k,depth+1)
+    print_Nodes_At_DepthK_V2(root.leftC, k, depth+1)
+    print_Nodes_At_DepthK_V2(root.rightC, k, depth+1)
 
 def Remove_Leaf_Nodes(root):
-    if root==None:
+    if root == None:
         return None
-    if root.leftC==None and root.rightC==None:
+    if root.leftC == None and root.rightC == None:
         return None
-    root.leftC=Remove_Leaf_Nodes(root.leftC)
-    root.rightC=Remove_Leaf_Nodes(root.rightC)
+    root.leftC = Remove_Leaf_Nodes(root.leftC)
+    root.rightC = Remove_Leaf_Nodes(root.rightC)
     return root
 
 def is_Balanced(root):
 #The time complexity in best case is O(nlogn)-->N=number of nodes and logn->Height of tree
 #Also, in worst case the time complexity can be O(n^2) when if the binary tree has nodes all in one side.Then n is
 #number of nodes and height will also be number of nodes. Here the operation og getting height is on every node.
-    if root==None:
+    if root == None:
         return True
-    left_height=height(root.leftC)
-    right_height=height(root.rightC)
-    if left_height - right_height>1 or right_height - left_height>1:
+    left_height = height(root.leftC)
+    right_height = height(root.rightC)
+    if left_height - right_height > 1 or right_height - left_height > 1:
         return False
-    is_left_Balanced=is_Balanced(root.leftC)
-    is_right_Balanced=is_Balanced(root.rightC)
+    is_left_Balanced = is_Balanced(root.leftC)
+    is_right_Balanced = is_Balanced(root.rightC)
     if is_left_Balanced and is_right_Balanced:
         return True
     else:
@@ -199,19 +199,18 @@ def is_Balanced(root):
 
 def getHeight_and_CheckBalanced(root):
     if root == None:
-        return 0,True
-    lh,is_left_balanced=getHeight_and_CheckBalanced(root.leftC)
-    rh,is_right_balanced=getHeight_and_CheckBalanced(root.rightC)
+        return 0, True
+    lh, is_left_balanced=getHeight_and_CheckBalanced(root.leftC)
+    rh, is_right_balanced=getHeight_and_CheckBalanced(root.rightC)
+    h = 1+max(lh, rh)
 
-    h=1+max(lh,rh)
-
-    if lh-rh>1 and rh-lh>1:
-        return h,False
+    if lh-rh > 1 and rh-lh > 1:
+        return h, False
 
     if is_left_balanced and is_right_balanced:
-        return h,True
+        return h, True
     else:
-        return h,False
+        return h, False
 
 def Root_to_Node_Print(root, s):
     if root == None:
@@ -221,16 +220,15 @@ def Root_to_Node_Print(root, s):
         l.append(root.data)
         return l
     left_check = Root_to_Node_Print(root.leftC, s)
-    if left_check!=None:
+    if left_check != None:
         left_check.append(root.data)
         return left_check
-    right_check=Root_to_Node_Print(root.rightC, s)
-    if right_check!=None:
+    right_check = Root_to_Node_Print(root.rightC, s)
+    if right_check != None:
         right_check.append(root.data)
         return right_check
     else:
         return None
-
 
 # bt1=Binary_Tree_Node(1)
 # bt2=Binary_Tree_Node(4)
@@ -278,6 +276,7 @@ root = level_wise_input()
 # preOrder=[1,2,4,5,3,6,7]
 # inOrder=[4,2,5,1,6,3,7]
 # root=Build_Tree_from_PreOrder_Inorder(preOrder,inOrder)
-print_Detailed_Tree(root)
+# print_Detailed_Tree(root)
+print_level_wise_input(root)
 # print(Root_to_Node_Print(root, 5))
 

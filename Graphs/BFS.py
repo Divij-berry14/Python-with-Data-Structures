@@ -1,3 +1,4 @@
+import queue
 class Graph:
     def __init__(self, nVertices):
         self.nVertices = nVertices
@@ -7,18 +8,7 @@ class Graph:
         self.adjMatrix[v1][v2] = 1
         self.adjMatrix[v2][v1] = 1
 
-    def __dfsHelper(self, sv, visited):
-        print(sv)
-        visited[sv] = True
-        for i in range(self.nVertices):
-            if (self.adjMatrix[sv][i] > 0 and visited[i] is False):
-                self.__dfsHelper(i, visited)
-
-    def dfs(self):
-        visited = [False for i in range(self.nVertices)]
-        self.__dfsHelper(0, visited)
-
-    def removeEdge(self, v1, v2):
+    def removesEdge(self, v1, v2):
         if self.containsEdge(v1, v2) is False:
             return
         self.adjMatrix[v1][v2] = 0
@@ -26,6 +16,19 @@ class Graph:
 
     def containsEdge(self, v1, v2):
         return True if self.adjMatrix[v1][v2] > 0 else False
+
+    def BFS(self):
+        q = queue.Queue()
+        q.put(0)
+        visited = [False for i in range(self.nVertices)]
+        visited[0] = True
+        while(q.empty() is False):
+            u = q.get()
+            print(u)
+            for i in range(self.nVertices):
+                if self.adjMatrix[u][i] > 0 and visited[i] is False:
+                    q.put(i)
+                    visited[i] = True
 
     def __str__(self):
         return str(self.adjMatrix)
@@ -38,7 +41,5 @@ g.addEdge(4, 5)
 g.addEdge(5, 6)
 g.addEdge(2, 6)
 g.addEdge(0, 2)
-# g.removeEdge(3, 1)
-# print(g.containsEdge(3, 1))
-# print(g)
-g.dfs()
+g.BFS()
+
