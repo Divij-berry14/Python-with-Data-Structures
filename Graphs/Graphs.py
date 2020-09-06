@@ -7,6 +7,7 @@
 
 #Graph with Adjacency Matrix
 
+import queue
 class Graph:
     def __init__(self, nVertices):
         self.nVertices = nVertices
@@ -25,14 +26,55 @@ class Graph:
     def containsEdge(self, v1, v2):
         return True if self.adjMatrix[v1][v2] > 0 else False
 
+    def __hasPath(self, v1, v2, visited):
+        if v1 == v2:
+            return True
+        q = queue.Queue()
+        q.put(v1)
+        visited[v1] = True
+        while(q.empty() is False):
+            u = q.get()
+            for i in range(self.nVertices):
+                if self.adjMatrix[u][i] == 1 and visited[i] is False:
+                    if i == v2:
+                        return True
+                    q.put(i)
+                    visited[i] = True
+        return False
+
+    # Solve with DFS
+    def hasPath(self, v1, v2):
+        visited = [False for i in range(self.nVertices)]
+        return self.__hasPath(v1, v2, visited)
+
     def __str__(self): #Dunder methods-returns the object reprsentation when we print the object. Converts objects to strings
         # print("__str__")
         return str(self.adjMatrix)
 
-g = Graph(5)
-g.addEdge(0, 1)
-g.addEdge(1, 3)
-g.addEdge(2, 4)
-g.removeEdge(3, 1)
-print(g.containsEdge(3, 1))
-print(g)
+# g = Graph(5)
+# g.addEdge(0, 1)
+# g.addEdge(1, 3)
+# g.addEdge(2, 4)
+# g.removeEdge(3, 1)
+# print(g.containsEdge(3, 1))
+# print(g)
+li = input().strip().split()
+V = int(li[0])
+E = int(li[1])
+
+g = Graph(V)
+
+for i in range(E):
+    arr = input().strip().split()
+    fv = int(arr[0])
+    sv = int(arr[1])
+    g.addEdge(fv, sv)
+
+li = input().strip().split()
+sv = int(li[0])
+ev = int(li[1])
+
+if g.hasPath(sv, ev):
+    print('True')
+else :
+    print('False')
