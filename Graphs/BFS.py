@@ -23,11 +23,11 @@ class Graph:
     def __str__(self):
         return str(self.adjMatrix)
 
-    def __bfs(self, sv, visited):
+    def __bfs(self, v1, visited):
         q = queue.Queue()
-        q.put(sv)
+        q.put(v1)
 
-        visited[sv] = True
+        visited[v1] = True
 
         while q.empty() is False:
             u = q.get()
