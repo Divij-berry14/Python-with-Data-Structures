@@ -1,23 +1,23 @@
 import queue
 class Binary_Tree:
-    def __init__(self,data):
-        self.left=None
-        self.right=None
-        self.data=data
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
 
 def num_nodes(root):
-    if root==None:
+    if root == None:
         return 0
-    left=num_nodes(root.left)
-    right=num_nodes(root.right)
+    left = num_nodes(root.left)
+    right = num_nodes(root.right)
     return 1+left+right
 
 def sum_nodes(root):
-    if root==None:
+    if root == None:
         return 0
-    left_sum=sum_nodes(root.left)
-    right_sum=sum_nodes(root.right)
-    return root.data+left_sum+right_sum
+    left_sum = sum_nodes(root.left)
+    right_sum = sum_nodes(root.right)
+    return root.data + left_sum + right_sum
 
 def largest_node(root):
     if root == None:
