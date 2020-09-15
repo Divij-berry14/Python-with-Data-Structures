@@ -14,7 +14,13 @@
 # li=[1,5]
 # func(li)
 # print(li)
-s1 = "dog is"
-s2 = "aa"
-print(len(s1))
-print(len(s2))
+# s1 = "dog is"
+# s2 = "aa"
+# print(len(s1))
+# print(len(s2))
+def fun(li):
+    li.append("11")
+    li.append("100")
+li = [1,2,3,4,5]
+fun(li)
+print(li)
