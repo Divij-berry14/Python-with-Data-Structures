@@ -19,7 +19,7 @@ class Graph:
             return True
         return False
 
-    def __ConnectedC(self,visited, arr1, sv):
+    def __ConnectedC(self, visited, arr1, sv):
         q = queue.Queue()
         q.put(sv)
         visited[sv] = True
@@ -31,6 +31,7 @@ class Graph:
                     q.put(i)
                     visited[i] = True
         return arr1
+
     def ConnectedComp(self):
         visited = [False for i in range(self.nVertices)]
         finalArr = []

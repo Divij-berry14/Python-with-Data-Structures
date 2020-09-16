@@ -42,7 +42,7 @@ class Graph:
                     visited[i] = True
         return False
 
-    # Solve with DFS
+    # Solve with BFS
     def hasPath(self, v1, v2):
         visited = [False for i in range(self.nVertices)]
         return self.__hasPath(v1, v2, visited)
