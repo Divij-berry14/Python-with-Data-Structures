@@ -3,6 +3,8 @@
 #Kruskal Algorithm -  It is used to find the MST of the graph. In this algo, you will select the edges with minimum
 #weights and form a MST
 
+# Complexity of Kruskal Algorithm - O(eloge) + O(V*E)
+# This algorithm can be reduced to O(eloge) + O(e log v) by Union Path and Rank Algorithm
 class Edge:
     def __init__(self, src, dest, wt):
         self.src = src
