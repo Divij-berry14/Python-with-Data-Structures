@@ -15,8 +15,7 @@
 # func(li)
 # print(li)
 # s1 = "dog is"
-# s2 = "aa"
-# print(len(s1))
+# s2 = "aa"# print(len(s1))
 # print(len(s2))
 def fun(li):
     li.append("11")
