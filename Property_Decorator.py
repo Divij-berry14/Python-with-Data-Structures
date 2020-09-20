@@ -2,6 +2,7 @@ class Employee:
     def __init__(self, first, last):
         self.first = first
         self.last = last
+        print("hello")
         # self.email = first + '.' + last + '@email.com'
 
     @property
