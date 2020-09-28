@@ -17,9 +17,19 @@
 # s1 = "dog is"
 # s2 = "aa"# print(len(s1))
 # print(len(s2))
-def fun(li):
-    li.append("11")
-    li.append("100")
-li = [1,2,3,4,5]
-fun(li)
-print(li)
+# def fun(li):
+#     li.append("11")
+#     li.append("100")
+# li = [1,2,3,4,5]
+# fun(li)
+# print(li)
+
+class Parent:
+    def __init__(self,p1):
+        self.p1 = p1
+class ch(Parent):
+    def __init__(self,p2):
+        self.p2 = p2
+
+o = ch(11)
+print(o.p1,o.p2)
