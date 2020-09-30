@@ -15,7 +15,7 @@ def BTToDLLUtil(root):
     # Convert left subtree
     # and link to root
     if root.left:
-
+        print("left1")
         # Convert the left subtree
         left = BTToDLLUtil(root.left)
 
@@ -23,11 +23,13 @@ def BTToDLLUtil(root):
         # this loop, left will point to the
         # inorder predecessor of root
         while left.right:
+            print("left2")
             left = left.right
 
         # Make root as next of predecessor
+        print("data",root.data)
         left.right = root
-
+        print("left3")
         # Make predecessor as
         # previous of root
         root.left = left
@@ -35,7 +37,7 @@ def BTToDLLUtil(root):
     # Convert the right subtree
     # and link to root
     if root.right:
-
+        print("right1")
         # Convert the right subtree
         right = BTToDLLUtil(root.right)
 
@@ -43,12 +45,13 @@ def BTToDLLUtil(root):
         # this loop, right will point to
         # the inorder successor of root
         while right.left:
+            print("right2")
             right = right.left
 
         # Make root as previous
         # of successor
         right.left = root
-
+        print("right3")
         # Make successor as
         # next of root
         root.right = right
@@ -90,7 +93,7 @@ if __name__ == '__main__':
     root.left.left = Node(25)
     root.left.right = Node(30)
     root.right.left = Node(36)
-
+    root.right.right = Node(50)
     head = BTToDLL(root)
     print_list(head)
 

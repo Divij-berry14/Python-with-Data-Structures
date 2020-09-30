@@ -1,4 +1,11 @@
 import queue
+
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
@@ -191,6 +198,27 @@ def isUnivalTree(root):
     return False
 
 
+def BTToDLL(root,LLhead, prev):
+    if root == None:
+        return
+
+    BTToDLL(root.left, LLhead, prev)
+
+    if prev.data == 0:
+        print("if prev")
+        print(root.data)
+        LLhead = root
+        prev = root
+
+    else:
+        print("prev else")
+        print(root.data)
+        root.left = prev
+        prev.right = root
+        prev = root
+
+    BTToDLL(root.right, LLhead, prev)
+    # return LLhead
 def takeLevelWiseTreeInput():
     q = queue.Queue()
     print("Enter root")
@@ -242,16 +270,22 @@ def printPostOrder(root):
     print(root.data)
 
 def InputTree():
-    rootData=int(input())
-    if rootData==-1:
+    rootData = int(input())
+    if rootData == -1:
         return None
-    root=BinaryTreeNode(rootData)
-    leftTree=InputTree()
-    rightTree=InputTree()
-    root.left=leftTree
-    root.right=rightTree
+    root = BinaryTreeNode(rootData)
+    leftTree = InputTree()
+    rightTree = InputTree()
+    root.left = leftTree
+    root.right = rightTree
     return root
 
+def print_LL(head):
+    if head is None:
+        return
+    while head:
+        print(head.data, end=" ")
+        head = head.right
 
 # btn1 = BinaryTreeNode(1)
 # btn2 = BinaryTreeNode(2)
@@ -262,10 +296,14 @@ def InputTree():
 # btn1.right = btn3
 # btn2.left = btn4
 # printTree(btn1)
-# root = InputTree()
+LLhead = Node(0)
+prev = Node(0)
+root = InputTree()
 # printDetailTree(btn1)
-root = takeLevelWiseTreeInput()
-printDetailTree(root)
+# root = takeLevelWiseTreeInput()
+# printDetailTree(root)
+head = BTToDLL(root, LLhead, prev)
+print_LL(head)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
