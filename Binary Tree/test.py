@@ -198,27 +198,27 @@ def isUnivalTree(root):
     return False
 
 
-def BTToDLL(root,LLhead, prev):
-    if root == None:
-        return
-
-    BTToDLL(root.left, LLhead, prev)
-
-    if prev.data == 0:
-        print("if prev")
-        print(root.data)
-        LLhead = root
-        prev = root
-
-    else:
-        print("prev else")
-        print(root.data)
-        root.left = prev
-        prev.right = root
-        prev = root
-
-    BTToDLL(root.right, LLhead, prev)
-    # return LLhead
+# def BTToDLL(root,LLhead, prev):
+#     if root == None:
+#         return
+#
+#     BTToDLL(root.left, LLhead, prev)
+#
+#     if prev.data == 0:
+#         print("if prev")
+#         print(root.data)
+#         LLhead = root
+#         prev = root
+#
+#     else:
+#         print("prev else")
+#         print(root.data)
+#         root.left = prev
+#         prev.right = root
+#         prev = root
+#
+#     BTToDLL(root.right, LLhead, prev)
+#     # return LLhead
 def takeLevelWiseTreeInput():
     q = queue.Queue()
     print("Enter root")
@@ -302,8 +302,8 @@ root = InputTree()
 # printDetailTree(btn1)
 # root = takeLevelWiseTreeInput()
 # printDetailTree(root)
-head = BTToDLL(root, LLhead, prev)
-print_LL(head)
+# head = BTToDLL(root, LLhead, prev)
+# print_LL(head)
 # print("Number of Nodes",numberOfNodes(root))
 # # printPostOrder(root)
 # print("largest Node",LargestNode(root))
