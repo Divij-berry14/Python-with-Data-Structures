@@ -8,15 +8,15 @@ class Binary_Tree_Node:
 class BST(Binary_Tree_Node):
 
     def __init__(self):
-        self.root=None
-        self.numNodes=0
+        self.root = None
+        self.numNodes = 0
 
-    def print_Tree_Helper(self,root):
+    def print_Tree_Helper(self, root):
         if root == None:
             return None
         print(root.data, end=":")
         if root.left != None:
-            print("L",root.left.data, end=",")
+            print("L", root.left.data, end=",")
         if root.right != None:
             print("R", root.right.data, end="")
         print()
@@ -175,19 +175,19 @@ def check_BST2(root):
     return minimum, maximum, is_tree_BST
 
 def node_to_root_path(root,s):
-    if root==None:
+    if root == None:
         return None
-    if root==s:
-        l=list()
+    if root == s:
+        l = list()
         l.append(root.data)
         return l
-    leftOutput=node_to_root_path(root.left,s)
-    if leftOutput!=None:
-        leftOutput.append(root.data,s)
+    leftOutput = node_to_root_path(root.left, s)
+    if leftOutput != None:
+        leftOutput.append(root.data, s)
         return leftOutput
-    rightOutput=node_to_root_path(root.right,s)
-    if rightOutput!=None:
-        rightOutput.append(root.data,s)
+    rightOutput = node_to_root_path(root.right, s)
+    if rightOutput != None:
+        rightOutput.append(root.data, s)
         return rightOutput
     else:
         return None
@@ -201,7 +201,7 @@ def level_wise_input():
     root = Binary_Tree_Node(root_data)
     q.put(root)
     while(not(q.empty())):
-        current_node=q.get()
+        current_node = q.get()
         print("Enter left child of", current_node.data)
         left_child_data = int(input())
         if left_child_data != -1:
@@ -219,12 +219,12 @@ def level_wise_input():
     return root
 
 def print_detailed_tree(root):
-    if root==None:
+    if root == None:
         return None
     print(root.data, end=":")
-    if root.left!=None:
+    if root.left != None:
         print("L", root.left.data, end=",")
-    if root.right!= None:
+    if root.right != None:
         print("R", root.right.data, end="")
     print()
     print_detailed_tree(root.left)
