@@ -44,11 +44,11 @@
 # we are going to that index and making it negative. If some other element again get to that position and see if it is negative
 # then it means it is already visited by some element means the number is occuring twice.
 def DuplicateElement(arr):
-    res=[]
-    n=len(arr)
+    res = []
+    n = len(arr)
     for i in arr:
-        i=abs(i)
-        if arr[i-1]>0:
+        i = abs(i)
+        if arr[i-1] > 0:
             arr[i-1] *= -1
         else:
             res.append(i)
