@@ -1,28 +1,28 @@
 def Merge_Two_Sorted_Array(li1,li2):
-    li3=[]
-    i=0
-    j=0
-    while i<len(li1) and j<len(li2):
-        if(li1[i]<li2[j]):
+    li3 = []
+    i = 0
+    j = 0
+    while i < len(li1) and j < len(li2):
+        if(li1[i] < li2[j]):
           li3.append(li1[i])
-          i=i+1
+          i = i+1
         else:
           li3.append(li2[j])
-          j=j+1
-    while(i<len(li1)):
+          j = j+1
+    while(i < len(li1)):
         li3.append(li1[i])
-        i=i+1
-    while(j<len(li2)):
+        i = i+1
+    while(j < len(li2)):
         li3.append(li2[j])
-        j=j+1
+        j = j+1
         
     for m in li3:
-        print(m,end=' ')
-n1=int(input())
-li1=[int(x) for x in input().split()]
-n2=int(input())
-li2=[int(y) for y in input().split()]
-Merge_Two_Sorted_Array(li1,li2)
+        print(m, end=' ')
+n1 = int(input())
+li1 = [int(x) for x in input().split()]
+n2 = int(input())
+li2 = [int(y) for y in input().split()]
+Merge_Two_Sorted_Array(li1, li2)
 
 def Non_Decreasing(li):
     length=len(li)

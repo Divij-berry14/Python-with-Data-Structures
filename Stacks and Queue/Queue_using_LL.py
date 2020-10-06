@@ -51,5 +51,3 @@ q.Enqueue(6)
 while q.isEmpty() is False:
     print(q.Dequeue())
 print(q.Queue_Front())
-
-    
