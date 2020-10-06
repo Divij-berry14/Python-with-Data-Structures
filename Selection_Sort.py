@@ -6,6 +6,7 @@ def Selection_Sort(li):
             if(li[minIndex] > li[j]):
                 minIndex = j
         li[i], li[minIndex] = li[minIndex], li[i]
+        print(li)
     
 
 #li=[1,3,2,4,0,6,8]

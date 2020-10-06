@@ -18,7 +18,7 @@ def InsertionSort(li):
         while j >= 0 and li[j] > temp:
             li[j+1] = li[j]
             j = j - 1
-            print(j,li)
+            print(j, li)
         li[j+1] = temp
         print(li)
 
