@@ -25,3 +25,16 @@ print(li1)
 print ("The original elements after shallow copying")
 for i in range(0,len( li1)):
 	print (li1[i],end=" ")
+
+
+
+class A:
+	def __init__(self, n):
+			self.name = n
+class B(A):
+	def __init__(self, roll,name):
+			self.roll = roll
+			A.__init__(self,name)
+
+object = B(23,"as")
+print (object.name)

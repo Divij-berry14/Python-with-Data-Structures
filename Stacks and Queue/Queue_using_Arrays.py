@@ -1,23 +1,23 @@
 class Queue_Using_Array:
     def __init__(self):
-        self.__arr=[]
-        self.__front=0
-        self.__count=0
+        self.__arr = []
+        self.__front = 0
+        self.__count = 0
     
-    def Enqueue(self,data):
+    def Enqueue(self, data):
         self.__arr.append(data)
-        self.__count+=1
+        self.__count += 1
     
     def Dequeue(self):
-        if self.__count==0:
+        if self.__count == 0:
             return -1
-        element=self.__arr[self.__front]
-        self.__front+=1
-        self.__count-=1
+        element = self.__arr[self.__front]
+        self.__front += 1
+        self.__count -= 1
         return element
         
     def front(self):
-        if self.__count==0:
+        if self.__count == 0:
             return -1
         return self.__arr[self.__front]
     
@@ -25,9 +25,9 @@ class Queue_Using_Array:
         return self.__count
     
     def isEmpty(self):
-        return self.size()==0
+        return self.size() == 0
     
-q=Queue_Using_Array()
+q = Queue_Using_Array()
 q.Enqueue(1)
 q.Enqueue(2)
 q.Enqueue(3)

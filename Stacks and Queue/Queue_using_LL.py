@@ -1,31 +1,31 @@
 class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
 class Stack_using_LL():
     def __init__(self):
-        self.__head=None
-        self.__tail=None
-        self.__count=0
+        self.__head = None
+        self.__tail = None
+        self.__count = 0
     
-    def Enqueue(self,data):
-        newNode=Node(data)
-        if self.__head==None and self.__tail==None:
-            self.__head=newNode
-            self.__tail=newNode
+    def Enqueue(self, data):
+        newNode = Node(data)
+        if self.__head == None and self.__tail == None:
+            self.__head = newNode
+            self.__tail = newNode
         else:
-            self.__tail.next=newNode
-            self.__tail=newNode
-        self.__count+=1
+            self.__tail.next = newNode
+            self.__tail = newNode
+        self.__count += 1
         
     def Dequeue(self):
         if self.__head is None:
             print("Hey! Queue is Empty")
             return
-        element=self.__head.data
-        self.__head=self.__head.next
-        self.__count=self.__count-1
+        element = self.__head.data
+        self.__head = self.__head.next
+        self.__count = self.__count-1
         return element
     
     def Queue_Front(self):
