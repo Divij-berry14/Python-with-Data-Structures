@@ -32,11 +32,11 @@ class Stack_using_LL():
         if self.__head is None:
             print("Hey! Queue is Empty")
             return
-        element=self.__head.data
+        element = self.__head.data
         return element
     
     def isEmpty(self):
-        return self.Qsize()==0
+        return self.Qsize() == 0
     
     def Qsize(self):
         return self.__count   #return Boolean, True/False

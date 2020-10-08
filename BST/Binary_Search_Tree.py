@@ -52,7 +52,7 @@ class BST(Binary_Tree_Node):
 
     def insert(self, data):
         self.numNodes = self.numNodes+1
-        self.root = self.insert_Helper(self.root,data)
+        self.root = self.insert_Helper(self.root, data)
 
     def min(self,root):
         if root==None:
