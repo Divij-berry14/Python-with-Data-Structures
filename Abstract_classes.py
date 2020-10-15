@@ -104,5 +104,5 @@ class Bus(Automobile):
 c=Car()
 c.start()
 c.stop()
-b=Bus()
+b = Bus()
 b.start()
