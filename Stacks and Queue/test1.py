@@ -43,6 +43,30 @@ class Queue:
         if self.head == None and self.tail == None:
             self.head = node
             self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
+        self.count += 1
+
+    def dequeue(self):
+        if self.count == 0:
+            print("Queue is empty")
+            return
+        data = self.head.data
+        self.head = self.head.next
+        self.count -= 1
+
+    def front(self):
+        if self.count == 0:
+            print("Queue is empty")
+            return
+        return self.head.data
+
+    def size(self):
+        return self.count
+
+    def isEmpty(self):
+        return self.count == 0
 
 q = Queue()
 q.enqueue(1)
@@ -51,7 +75,7 @@ q.enqueue(3)
 q.enqueue(4)
 q.enqueue(5)
 while(q.isEmpty() is False):
-    print(q.Front())
+    print(q.front())
     q.dequeue()
 print(q.isEmpty())
 print(q.dequeue())
