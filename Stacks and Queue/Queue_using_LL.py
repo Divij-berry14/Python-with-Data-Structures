@@ -30,7 +30,7 @@ class Stack_using_LL():
     
     def Queue_Front(self):
         if self.__head is None:
-            print("Hey! Queue is Empty")
+            print("Hey! Queue is Emptyy")
             return
         element = self.__head.data
         return element
