@@ -67,44 +67,121 @@
 #
 #     def isEmpty(self):
 #         return self.count == 0
-class Queue:
-    def __init__(self):
-        self.arr1 = []
-        self.arr2 = []
+# class Queue:
+#     def __init__(self):
+#         self.arr1 = []
+#         self.arr2 = []
+#
+#     def enqueue(self, data):
+#         while len(self.arr1) != 0:
+#             self.arr2.append(self.arr1.pop())
+#         self.arr1.append(data)
+#         while len(self.arr2) != 0:
+#             self.arr1.append(self.arr2.pop())
+#         return
+#
+#     def dequeue(self):
+#         if self.isEmpty():
+#             print("Queue is Empty")
+#             return
+#         return self.arr1.pop()
+#
+#     def front(self):
+#         if len(self.arr1) == 0:
+#             return -1
+#         return self.arr1[-1]
+#
+#     def size(self):
+#         return len(self.arr1)
+#
+#     def isEmpty(self):
+#         return self.size() == 0
+#
+# q = Queue()
+# q.enqueue(1)
+# q.enqueue(2)
+# q.enqueue(3)
+# q.enqueue(4)
+# q.enqueue(5)
+# while(q.isEmpty() is False):
+#     print(q.front())
+#     q.dequeue()
+# print(q.isEmpty())
+# print(q.dequeue())
 
-    def enqueue(self, data):
-        while len(self.arr1) != 0:
-            self.arr2.append(self.arr1.pop())
-        self.arr1.append(data)
-        while len(self.arr2) != 0:
-            self.arr1.append(self.arr2.pop())
-        return
+# import queue
+# Q = queue.Queue(maxsize=3)
+# print(Q.qsize())
+# Q.put("a")
+# Q.put("b")
+# Q.put("c")
+# Q.put("d")
+# print(Q.full())
+# print("Empty queue")
+# print(Q.get())
+# print(Q.get())
+# print(Q.get())
+# print(Q.get())
+# print("Empty",Q.empty())
+# Q.put(1)
+# print(Q.empty())
+# print(Q.full())
 
-    def dequeue(self):
-        if self.isEmpty():
-            print("Queue is Empty")
-            return
-        return self.arr1.pop()
+# from queue import Queue
+#
+# # Initializing a queue
+# q = Queue(maxsize=3)
+#
+# # qsize() give the maxsize
+# # of the Queue
+# print(q.qsize())
+#
+# # Adding of element to queue
+# q.put('a')
+# q.put('b')
+# q.put('c')
+#
+# # Return Boolean for Full
+# # Queue
+# print("\nFull: ", q.full())
+#
+# # Removing element from queue
+# print("\nElements dequeued from the queue")
+# print(q.get())
+# print(q.get())
+# print(q.get())
+#
+# # Return Boolean for Empty
+# # Queue
+# print("\nEmpty: ", q.empty())
+#
+# q.put(1)
+# print("\nEmpty: ", q.empty())
+# print("Full: ", q.full())
 
-    def front(self):
-        if len(self.arr1) == 0:
-            return -1
-        return self.arr1[-1]
+# This would result into Infinite
+# Loop as the Queue is empty.
+# print(q.get())
+import queue
 
-    def size(self):
-        return len(self.arr1)
+# From class queue, Queue is
+# created as an object Now L
+# is Queue of a maximum
+# capacity of 20
+L = queue.Queue(maxsize=20)
 
-    def isEmpty(self):
-        return self.size() == 0
+# Data is inserted into Queue
+# using put() Data is inserted
+# at the end
+L.put(5)
+L.put(9)
+L.put(1)
+L.put(7)
 
-q = Queue()
-q.enqueue(1)
-q.enqueue(2)
-q.enqueue(3)
-q.enqueue(4)
-q.enqueue(5)
-while(q.isEmpty() is False):
-    print(q.front())
-    q.dequeue()
-print(q.isEmpty())
-print(q.dequeue())
+# get() takes data out from
+# the Queue from the head
+# of the Queue
+print(L.get())
+print(L.get())
+print(L.get())
+print(L.get())
