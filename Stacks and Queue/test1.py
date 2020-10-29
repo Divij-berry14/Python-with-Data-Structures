@@ -27,45 +27,77 @@
 #     def isEmpty(self):
 #         return self.count == 0
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+#
+# class Queue:
+#     def __init__(self):
+#         self.head = None
+#         self.tail = None
+#         self.count = 0
+#
+#     def enqueue(self, data):
+#         node = Node(data)
+#         if self.head == None and self.tail == None:
+#             self.head = node
+#             self.tail = node
+#         else:
+#             self.tail.next = node
+#             self.tail = node
+#         self.count += 1
+#
+#     def dequeue(self):
+#         if self.count == 0:
+#             print("Queue is empty")
+#             return
+#         data = self.head.data
+#         self.head = self.head.next
+#         self.count -= 1
+#
+#     def front(self):
+#         if self.count == 0:
+#             print("Queue is empty")
+#             return
+#         return self.head.data
+#
+#     def size(self):
+#         return self.count
+#
+#     def isEmpty(self):
+#         return self.count == 0
 class Queue:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.arr1 = []
+        self.arr2 = []
         self.count = 0
 
-    def enqueue(self, data):
-        node = Node(data)
-        if self.head == None and self.tail == None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
+    def Enqueue(self, data):
+        while len(self.arr1) != 0:
+            self.arr2.append(self.arr1.pop())
+        self.arr1.append(data)
         self.count += 1
+        while len(self.arr2) != 0:
+            self.arr1.append(self.arr2.pop())
+        return
 
-    def dequeue(self):
-        if self.count == 0:
-            print("Queue is empty")
+    def Dequeue(self):
+        if self.QisEmpty():
+            print("Queue is Empty")
             return
-        data = self.head.data
-        self.head = self.head.next
+        return self.arr1.pop()
         self.count -= 1
 
-    def front(self):
+    def QFront(self):
         if self.count == 0:
-            print("Queue is empty")
-            return
-        return self.head.data
+            return -1
+        return self.arr1[-1]
 
-    def size(self):
+    def Qsize(self):
         return self.count
 
-    def isEmpty(self):
+    def QisEmpty(self):
         return self.count == 0
 
 q = Queue()
