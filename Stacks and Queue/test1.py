@@ -71,34 +71,31 @@ class Queue:
     def __init__(self):
         self.arr1 = []
         self.arr2 = []
-        self.count = 0
 
-    def Enqueue(self, data):
+    def enqueue(self, data):
         while len(self.arr1) != 0:
             self.arr2.append(self.arr1.pop())
         self.arr1.append(data)
-        self.count += 1
         while len(self.arr2) != 0:
             self.arr1.append(self.arr2.pop())
         return
 
-    def Dequeue(self):
-        if self.QisEmpty():
+    def dequeue(self):
+        if self.isEmpty():
             print("Queue is Empty")
             return
         return self.arr1.pop()
-        self.count -= 1
 
-    def QFront(self):
-        if self.count == 0:
+    def front(self):
+        if len(self.arr1) == 0:
             return -1
         return self.arr1[-1]
 
-    def Qsize(self):
-        return self.count
+    def size(self):
+        return len(self.arr1)
 
-    def QisEmpty(self):
-        return self.count == 0
+    def isEmpty(self):
+        return self.size() == 0
 
 q = Queue()
 q.enqueue(1)
