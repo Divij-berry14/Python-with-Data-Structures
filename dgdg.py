@@ -83,33 +83,16 @@
 # demonstrate protected members
 
 
-# Creating a base class
-class Base:
-  def __init__(self):
-    # Protected member
-    self.a = 2
+import re
 
+number = int(input())
 
-# Creating a derived class
-  class Base:
-    def __init__(self):
-      self.a = "GeeksforGeeks"
-      self.__c = "GeeksforGeeks"
-
-
-# Creating a derived class
-class Derived(Base):
-  def __init__(self):
-    # Calling constructor of
-    # Base class
-    Base.__init__(self)
-    print("Calling private member of base class: ")
-    print(self.__c)
-
-
-# Driver code
-obj1 = Derived()
-print(obj1.c)
+for n in range(number):
+    string = input()
+    if re.search(r'^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])$', string):
+        print('Valid')
+    else:
+        print('Invalid')
 
 
 
