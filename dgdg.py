@@ -104,10 +104,14 @@ li = []
 for i in arr:
     d[i] = d.get(i, 0) + 1
 print(d)
-sorted_d = dict( sorted(d.items(), key=operator.itemgetter(1),reverse=True))
+sorted_d = dict(sorted(d.items(), key= lambda kv:(kv[1],kv[0]),reverse=True))
 print(sorted_d)
-for i in range(len(sorted_d)):
-    if sorted_d[i]
+for i in sorted_d:
+    li.append(i)
+print(li)
+# for i in sorted_d:
+
+
 
 
 
