@@ -83,16 +83,31 @@
 # demonstrate protected members
 
 
-import re
+# import re
+#
+# number = int(input())
+#
+# for n in range(number):
+#     string = input()
+#     if re.search(r'^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])$', string):
+#         print('Valid')
+#     else:
+#         print('Invalid')
 
-number = int(input())
 
-for n in range(number):
-    string = input()
-    if re.search(r'^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])$', string):
-        print('Valid')
-    else:
-        print('Invalid')
+
+import operator
+n = int(input())
+arr = [int(x) for x in input().split()]
+d = {}
+li = []
+for i in arr:
+    d[i] = d.get(i, 0) + 1
+print(d)
+sorted_d = dict( sorted(d.items(), key=operator.itemgetter(1),reverse=True))
+print(sorted_d)
+for i in range(len(sorted_d)):
+    if sorted_d[i]
 
 
 
