@@ -83,32 +83,49 @@
 # demonstrate protected members
 
 
-import re
-
-number = int(input())
-
-for n in range(number):
-    string = input()
-    if re.search(r'^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])$', string):
-        print('Valid')
-    else:
-        print('Invalid')
-
-
-import operator
-n = int(input())
-arr = [int(x) for x in input().split()]
-d = {}
-li = []
-for i in arr:
-    d[i] = d.get(i, 0) + 1
-print(d)
-sorted_d = dict(sorted(d.items(), key= lambda kv:(kv[1],kv[0]),reverse=True))
-print(sorted_d)
-for i in sorted_d:
-    li.append(i)
-print(li)
+# import re
+#
+# number = int(input())
+#
+# for n in range(number):
+#     string = input()
+#     if re.search(r'^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])$', string):
+#         print('Valid')
+#     else:
+#         print('Invalid')
+#
+#
+# import operator
+# n = int(input())
+# arr = [int(x) for x in input().split()]
+# d = {}
+# li = []
+# for i in arr:
+#     d[i] = d.get(i, 0) + 1
+# print(d)
+# sorted_d = dict(sorted(d.items(), key= lambda kv:(kv[1],kv[0]),reverse=True))
+# print(sorted_d)
 # for i in sorted_d:
+#     li.append(i)
+# print(li)
+# # for i in sorted_d:
+
+def fun(n):
+    b=int(pow(n,0.5))
+    s=0
+    for i in range(1,b+1):
+        s=s+n//i
+    s=2*s-(b*b)
+    return s
+
+t = int(input())
+for i in range(t):
+    arr = [int(x) for x in input().split()]
+    sum1 = 0
+    for j in arr:
+        temp = fun(j)
+        sum1 = sum1 + temp
+    print(sum1)
 
 
 
