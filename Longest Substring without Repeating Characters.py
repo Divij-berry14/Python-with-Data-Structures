@@ -64,7 +64,7 @@ def findLongestSubstring(string):
             print("pos2", pos)
 
         # Compare length of last substring with maxlen
-    # and update maxlen and start accordingly.
+    # and update maxlen and start accocrdingly.
     if maxlen < i - st:
         maxlen = i - st
         start = st
