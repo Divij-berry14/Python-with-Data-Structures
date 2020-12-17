@@ -29,7 +29,7 @@ def encodedChar(str, k):
             # generating frequency of temp
             freq = freq * 10 + ord(str[i]) - ord('0')
             i += 1
-            print("i2","freq",i,freq)
+            print("i2", "freq", i, freq)
 
         print("out2")
 
@@ -37,7 +37,7 @@ def encodedChar(str, k):
         # equal to its frequency
         for j in range(0, freq, 1):
             expand += temp
-            print("expand",expand)
+            print("expand", expand)
 
         # this condition is to handle the case
     # when string str is ended with alphabeds
@@ -53,6 +53,3 @@ if __name__ == '__main__':
     str = "ab4c12ed3"
     k = 21
     print(encodedChar(str, k))
-
-# This code is contributed by
-# Shashank_Sharma
