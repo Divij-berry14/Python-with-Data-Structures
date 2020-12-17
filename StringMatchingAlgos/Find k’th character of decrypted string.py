@@ -20,7 +20,7 @@ def encodedChar(str, k):
             # ab4c12ed3
             temp += str[i]
             i += 1
-            print("i1","temp",i,temp)
+            print("i1", "temp", i, temp)
         print("out1")
         # read number for how many times string temp
         # will be repeated in decompressed string
