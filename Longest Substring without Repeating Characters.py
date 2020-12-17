@@ -1,4 +1,34 @@
+#Sliding Window Algorithm
+def findLongestSubstring(string):
+    if len(string) == 0:
+        return 0
+    li = list(string)
+    # print(li)
+    n = len(string)
+    d = {}
+    for i in string:
+        if i not in d:
+            d[i] = 0
+    # print(d)
+    i = 0
+    j = 0
+    ans = 1
+    d[li[0]] = 1
+    while(j != n - 1):
+        key = li[j+1]
+        if(d[key] == 0):
+            j += 1
+            d[li[j]] = 1
+            ans = max(ans, j-i+1)
+            print(d)
+        else:
+            d[li[i]] -= 1
+            i += 1
+            print(d)
+    return ans
 
+string = "abrexrz"
+print(findLongestSubstring(string))
 # def findLongestSubstring(string):
 #     n = len(string)
 #
