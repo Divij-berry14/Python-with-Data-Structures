@@ -1,3 +1,13 @@
+#CLOSURES
+
+def outer():
+    msg = "Hello World, People!"
+    def inner():
+        return msg
+    return inner
+
+a = outer()
+print(a())
 def outer_dec(func):
     def inner():
         str1 = func()

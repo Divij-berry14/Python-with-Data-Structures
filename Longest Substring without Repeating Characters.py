@@ -1,4 +1,5 @@
 #Sliding Window Algorithm
+
 def findLongestSubstring(string):
     if len(string) == 0:
         return 0
@@ -9,7 +10,7 @@ def findLongestSubstring(string):
     for i in string:
         if i not in d:
             d[i] = 0
-    # print(d)
+    print(d)
     i = 0
     j = 0
     ans = 1
