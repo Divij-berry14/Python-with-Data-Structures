@@ -1,5 +1,4 @@
 #CLOSURES
-
 def outer():
     msg = "Hello World, People!"
     def inner():
@@ -7,7 +6,10 @@ def outer():
     return inner
 
 a = outer()
+print(a.__name__)
 print(a())
+
+
 def outer_dec(func):
     def inner():
         str1 = func()
