@@ -13,7 +13,7 @@ def LengthLL(head):
 def LenghtLLRec(head):
     if head is None:
         return 0
-    p=LenghtLLRec(head.next)+1
+    p = LenghtLLRec(head.next)+1
     return p
 
 def InsertNodeLL(head,data,i):
@@ -47,7 +47,7 @@ def InputNodeRec(head,data,i):
         newNode.next = head
         p = newNode
         return p
-    p =  InsertNodeLL(head.next,data,i-1)
+    p = InsertNodeLL(head.next,data,i-1)
     head.next = p
     return head
 
