@@ -1,65 +1,68 @@
 class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-def printLL(head):
-    while(head is not None):
-        print(str(head.data),"->",end="")
-        head=head.next
+
+def print_ll(head):
+    while head is not None:
+        print(str(head.data), "->", end="")
+        head = head.next
     print("None")
     return head
 
-def length(head):
-    count=0
-    while(head is not None):
-        count=count+1
-        head=head.next 
-    return count
-        
-def insertAtI(head,i,data):
-    if i<0 and i>length(head):
-        return head
-    count=0
-    prev=None
-    curr=head
-    
-    while(count<i):
-        prev=curr
-        curr=curr.next
-        count=count+1
-        
-    newNode=Node(data)
-    
-    if prev is not None:
-        prev.next=newNode
-    else:
-        head=newNode
-    
-    newNode.next=curr
-    return head
-        
 
-def takeinput():
-    head=None
-    inputarr=[int(x) for x in input().split()]
-    for currdata in inputarr:
-        if(currdata==-1):
-            break
-        newNode=Node(currdata)
-        if head is None:
-            head=newNode
-        else:
-            curr=head
-            while(curr.next is not None):
-                curr=curr.next
-            curr.next=newNode
+def length_ll(head):
+    count = 0
+    while head is not None:
+        count = count + 1
+        head = head.next
+    return count
+
+
+def insert_at_i(head, i, data):
+    if 0 > i > length_ll(head):
+        return head
+    count = 0
+    prev = None
+    curr = head
+
+    while count < i:
+        prev = curr
+        curr = curr.next
+        count = count + 1
+
+    new_node = Node(data)
+
+    if prev is not None:
+        prev.next = new_node
+    else:
+        head = new_node
+
+    new_node.next = curr
     return head
-    
-head=takeinput()
-printLL(head)
-head=insertAtI(head,2,6)
-printLL(head)
-head=insertAtI(head,0,9)
-printLL(head)
-        
+
+
+def take_input():
+    head = None
+    input_arr = [int(x) for x in input().split()]
+    for curr_data in input_arr:
+        if curr_data == -1:
+            break
+        new_node = Node(curr_data)
+        if head is None:
+            head = new_node
+        else:
+            curr = head
+            while curr.next is not None:
+                curr = curr.next
+            curr.next = new_node
+    return head
+
+
+Head = take_input()
+print_ll(Head)
+Head = insert_at_i(Head, 2, 6)
+print_ll(Head)
+Head = insert_at_i(Head, 0, 9)
+print_ll(Head)
