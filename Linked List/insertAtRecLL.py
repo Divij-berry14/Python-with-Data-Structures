@@ -1,61 +1,66 @@
 class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-def printLL(head):
-    while(head is not None):
+
+def print_LL(head):
+    while head is not None:
         print(str(head.data),"->",end='')
-        head=head.next
+        head = head.next
     print("None")
     return
 
-def lengthLL(head):
-    count=0
-    while(head is not None):
-        count=count+1
-        head=head.next
+
+def length_LL(head):
+    count = 0
+    while head is not None:
+        count += 1
+        head = head.next
     return head
 
-def insertAtRecLL(head,i,data):
-    if i<0:
+
+def insert_at_pos_rec(head, i, data):
+    if i < 0:
         return head
-    
-    if i==0:
-        newNode=Node(data)
-        newNode.next=head
-        return newNode
-    
+
+    if i == 0:
+        new_node = Node(data)
+        new_node.next = head
+        return new_node
+
     if head is None:
         return None
-    
-    smallhead=insertAtRecLL(head.next,i-1,data)
-    head.next=smallhead
+
+    small_head = insert_at_pos_rec(head.next, i-1, data)
+    head.next = small_head
     return head
 
-def takeInput():
-    inputList=[int(ele) for ele in input().split()]
-    head=None
-    tail=None
+
+def take_input():
+    inputList = [int(ele) for ele in input().split()]
+    head = None
+    tail = None
     for currData in inputList:
-        if currData==-1:
+        if currData is -1:
             break
-        newNode=Node(currData)
+        new_node = Node(currData)
         if head is None:
-            head=newNode
-            tail=newNode
+            head = new_node
+            tail = new_node
         else:
-            tail.next=newNode
-            tail=newNode
+            tail.next = new_node
+            tail = new_node
             
     return head
 
-head = takeInput()
-printLL(head)
-head=insertAtRecLL(head,2,7)
-printLL(head)
-head=insertAtRecLL(head,0,9)
-printLL(head)
+
+Head = take_input()
+print_LL(Head)
+Head = insert_at_pos_rec(Head, 2, 7)
+print_LL(Head)
+Head = insert_at_pos_rec(Head, 0, 9)
+print_LL(Head)
 
 
             
