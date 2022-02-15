@@ -1,5 +1,6 @@
 from sys import setrecursionlimit
 
+
 class Node:
     def __init__(self, data):
         self.data = data
