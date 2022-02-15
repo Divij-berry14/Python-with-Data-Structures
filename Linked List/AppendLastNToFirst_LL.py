@@ -3,53 +3,61 @@ class Node:
         self.data = data
         self.next = None
 
-def append_LinkedList(head,n) :
-    #  Given a linked list and an integer n, append the last n elements of the LL
-    #  to front. 
-    #############################
-    # PLEASE ADD YOUR CODE HERE #
-    #############################
-    curr = head
-    temp1 = head
-    prev = None
+
+def length_ll(head):
     count = 0
-    while curr:
-        count+=1
-        curr=curr.next
+    while head is not None:
+        head = head.next
+        count += 1
+    return count
+
+
+def append_last_n_to_first(head, n):
+    count = length_ll(head)
+    curr = head
+    prev = None
+    temp1 = head
+    while curr is not None:
+        curr = curr.next
     temp2 = count - n
-    res = 0
-    while temp1 and res!=temp2:
+    temp3 = 0
+    while temp1 is not None and temp3 != temp2:
         prev = temp1
         temp1 = temp1.next
-        res+=1
+        temp3 += 1
     prev.next = None
-    temp3 = temp1
-    while temp3.next!=None:
-        temp3 = temp3.next
-    temp3.next = head
-    return temp1
+    head1 = temp1
+    while temp1.next is not None:
+        temp1 = temp1.next
+    temp1.next = head
+    return head1
 
-def ll(arr):
-    if len(arr)==0:
-        return None
-    head = Node(arr[0])
-    last = head
-    for data in arr[1:]:
-        last.next = Node(data)
-        last = last.next
+
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
+
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
+            break
+        new_node = Node(curr_val)
+        if head is None:
+            head = new_node
+            tail = new_node
+        else:
+            tail.next = new_node
+            tail = new_node
     return head
 
-def printll(head):
-    while head:
-        print(head.data, end=' ')
-        head = head.next
-    print()
 
-# Main
-# Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
-# Create a Linked list after removing -1 from list
-l = ll(arr[:-1])
-i=int(input())
-l = append_LinkedList(l, i)
-printll(l)
+Head = input_ll()
+print_ll(Head)
+Head = append_last_n_to_first(Head, 5)
+print_ll(Head)
