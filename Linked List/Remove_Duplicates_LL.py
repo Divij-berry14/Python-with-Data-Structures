@@ -3,38 +3,45 @@ class Node:
         self.data = data
         self.next = None
 
+
 def eliminate_duplicate(head):
-    curr=head
-    while(curr is not None and curr.next is not None):
-        if(curr.data==curr.next.data):
-            new=curr.next.next
-            curr.next=None
-            curr.next=new
+    curr = head
+    while curr is not None and curr.next is not None:
+        if curr.data == curr.next.data:
+            new = curr.next.next
+            curr.next = None
+            curr.next = new
         else:
-            curr=curr.next
-            
+            curr = curr.next
+
     return head
 
-def ll(arr):
-    if len(arr)==0:
-        return None
-    head = Node(arr[0])
-    last = head
-    for data in arr[1:]:
-        last.next = Node(data)
-        last = last.next
-    return head
 
-def printll(head):
-    while head:
-        print(head.data, end=' ')
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
         head = head.next
-    print()
+    print("None")
 
-# Main
-# Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
-# Create a Linked list after removing -1 from list
-l = ll(arr[:-1])
-l = eliminate_duplicate(l)
-printll(l)
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
+            break
+        new_node = Node(curr_val)
+        if head is None:
+            head = new_node
+            tail = new_node
+        else:
+            tail.next = new_node
+            tail = new_node
+    return head
+
+
+Head = input_ll()
+print_ll(Head)
+Head = eliminate_duplicate(Head)
+print_ll(Head)
