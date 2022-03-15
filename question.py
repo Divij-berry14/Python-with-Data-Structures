@@ -162,6 +162,37 @@ def reverse_ll_rec(head):
     return small_head
 
 
+def reverse_ll_rec_2(head):
+    if head is None or head.next is None:
+        return head
+    small_head = reverse_ll_rec_2(head.next)
+    curr = small_head
+    while curr.next is not None:
+        curr = curr.next
+    curr.next = head
+    head.next = None
+    return small_head
+
+
+def reverse_ll_rec_3(head):
+    if head is None or head.next is None:
+        return head, head
+    small_head, small_tail = reverse_ll_rec_3(head.next)
+    small_tail.next = head
+    head.next = None
+    return small_head, head
+
+
+def reverse_ll_rec_4(head):
+    if head is None or head.next is None:
+        return head
+    small_head = reverse_ll_rec_4(head.next)
+    tail = head.next
+    tail.next = head
+    head.next = None
+    return small_head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -206,5 +237,11 @@ print(length_recursive(Head))
 # Head = reverse_ll(Head)
 # print_ll(Head)
 # print(palindrome_ll(Head))
-Head = reverse_ll_rec(Head)
-print_ll(Head)
+# Head = reverse_ll_rec(Head)
+# print_ll(Head)
+# Head = reverse_ll_rec_2(Head)
+# print_ll(Head)
+# Head, Tail = reverse_ll_rec_3(Head)
+# print_ll(Head)
+# Head = reverse_ll_rec_4(Head)
+# print_ll(Head)
