@@ -129,10 +129,10 @@ def reverse_ll(head):
     curr = head
     prev = None
     while curr is not None:
-        temp1 = curr.next
+        temp = curr.next
         curr.next = prev
         prev = curr
-        curr = temp1
+        curr = temp
     return prev
 
 
@@ -151,6 +151,15 @@ def palindrome_ll(head):
         left = left + 1
         right = right - 1
     return True
+
+
+def reverse_ll_rec(head):
+    if head is None or head.next is None:
+        return head
+    small_head = reverse_ll_rec(head.next)
+    head.next.next = head
+    head.next = None
+    return small_head
 
 
 def print_ll(head):
@@ -196,4 +205,6 @@ print(length_recursive(Head))
 # print_ll(Head)
 # Head = reverse_ll(Head)
 # print_ll(Head)
-print(palindrome_ll(Head))
+# print(palindrome_ll(Head))
+Head = reverse_ll_rec(Head)
+print_ll(Head)
