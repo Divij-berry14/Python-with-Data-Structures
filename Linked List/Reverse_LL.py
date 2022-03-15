@@ -3,89 +3,79 @@ class Node:
         self.data = data
         self.next = None
 
-def printLL(head):
-    while(head is not None):
-        print(str(head.data),"-->",end=' ')
-        head=head.next
-    print("None")
-    return 
 
-def reverse_LL_rec(head):
-    if head is None:
-        return
-    reverse_LL_rec(head.next)
-    print(head.data, end=' ')
-#    
-def reverse_LL(head):
-    prev = None
-    curr = head
-    while(curr is not None):
-        next = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next
-    head = prev
-    return head
-
-def reverse_LL2_rec(head):
+def reverse_ll_rec(head):
     if head is None or head.next is None:
         return head
-    
-    smallhead = reverse_LL2_rec(head.next)
-    curr = smallhead
+    small_head = reverse_ll_rec(head.next)
+    head.next.next = head
+    head.next = None
+    return small_head
+
+
+def reverse_ll_rec_2(head):
+    if head is None or head.next is None:
+        return head
+    small_head = reverse_ll_rec_2(head.next)
+    curr = small_head
     while curr.next is not None:
         curr = curr.next
     curr.next = head
     head.next = None
-    return smallhead
+    return small_head
 
-def reverse_LL3_rec_Optimized(head):
-    
+
+def reverse_ll_rec_3(head):
     if head is None or head.next is None:
         return head, head
-    smallhead, smalltail = reverse_LL3_rec_Optimized(head.next)
-    smalltail.next = head
+    small_head, small_tail = reverse_ll_rec_3(head.next)
+    small_tail.next = head
     head.next = None
-    return smallhead, head
+    return small_head, head
 
-def reverse_LL4_rec_Optimized(head):
-    
+
+def reverse_ll_rec_4(head):
     if head is None or head.next is None:
         return head
-    smallhead = reverse_LL4_rec_Optimized(head.next)
+    small_head = reverse_ll_rec_4(head.next)
     tail = head.next
     tail.next = head
     head.next = None
-    return smallhead
+    return small_head
 
 
-def inputLL():
-    head=None
-    tail=None
-    inputlist=[int(x) for x in input().split()]
-    for currdata in inputlist:
-        if currdata==-1:
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
+
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
             break
-        newNode=Node(currdata)
+        new_node = Node(curr_val)
         if head is None:
-            head=newNode
-            tail=head
+            head = new_node
+            tail = new_node
         else:
-            tail.next=newNode
-            tail=newNode
+            tail.next = new_node
+            tail = new_node
     return head
 
-head=inputLL()
-printLL(head)
-reverse_LL_rec(head)
-printLL(head)
-head=reverse_LL2_rec(head)
-printLL(head)
-head=reverse_LL(head)
-printLL(head)
-head,tail=reverse_LL3_rec_Optimized(head)
-printLL(head)
-head=reverse_LL4_rec_Optimized(head)
-printLL(head)
 
+Head = input_ll()
+print_ll(Head)
+Head = reverse_ll_rec(Head)
+print_ll(Head)
+Head = reverse_ll_rec_2(Head)
+print_ll(Head)
+Head, Tail = reverse_ll_rec_3(Head)
+print_ll(Head)
+Head = reverse_ll_rec_4(Head)
+print_ll(Head)
 
