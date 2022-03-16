@@ -1,48 +1,58 @@
 class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-def print_LL(head):
-    while(head is not None):
-        print(str(head.data)," -->",end=' ')
-        head=head.next
-    print("None")
-    return
 
-def length(head):
-    count=0
-    while(head is not None):
-        count=count+1
-        head=head.next
+def length_ll(head):
+    count = 0
+    while head is not None:
+        count = count+1
+        head = head.next
     return count
 
-def mid_element_LL(head):
-    slow=head
-    fast=head
-    while fast.next!=None and fast.next.next!=None:
-        slow=slow.next
-        fast=fast.next.next
-    print(str(slow.data))
-    return
 
-def input_LL():
-    head=None
-    tail=None
-    input_list=[int(x) for x in input().split()]
-    for currdata in input_list:
-        if currdata==-1:
+def mid_point_ll(head):
+    slow = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    print(str(slow.data))
+    # length = length_ll(head) - 1
+    # count = 0
+    # while head is not None:
+    #     if count == length//2:
+    #         print(head.data)
+    #         break
+    #     head = head.next
+    #     count += 1
+
+
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
+
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
             break
-        newNode=Node(currdata)
+        new_node = Node(curr_val)
         if head is None:
-            head=newNode
-            tail=head
+            head = new_node
+            tail = new_node
         else:
-            tail.next=newNode
-            tail=newNode
+            tail.next = new_node
+            tail = new_node
     return head
 
-head=input_LL()
-print_LL(head)
-mid_element_LL(head)
 
+Head = input_ll()
+print_ll(Head)
+mid_point_ll(Head)
