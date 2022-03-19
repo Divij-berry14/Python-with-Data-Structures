@@ -77,7 +77,7 @@ def insert_at_pos_rec(head, i, data):
     if head is None:
         return None
 
-    small_head = insert_at_pos_rec(head.next, i-1, data)
+    small_head = insert_at_pos_rec(head.next, i - 1, data)
     head.next = small_head
     return head
 
@@ -89,7 +89,7 @@ def delete_node_rec(head, i):
     if i is 0:
         return head.next
 
-    small_head = delete_node_rec(head.next, i-1)
+    small_head = delete_node_rec(head.next, i - 1)
     head.next = small_head
     return head
 
@@ -193,6 +193,23 @@ def reverse_ll_rec_4(head):
     return small_head
 
 
+def mid_point_ll(head):
+    slow = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    print(str(slow.data))
+    # length = length_ll(head) - 1
+    # count = 0
+    # while head is not None:
+    #     if count == length//2:
+    #         print(head.data)
+    #         break
+    #     head = head.next
+    #     count += 1
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -245,3 +262,4 @@ print(length_recursive(Head))
 # print_ll(Head)
 # Head = reverse_ll_rec_4(Head)
 # print_ll(Head)
+mid_point_ll(Head)
