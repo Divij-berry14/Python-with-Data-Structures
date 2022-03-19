@@ -210,6 +210,37 @@ def mid_point_ll(head):
     #     count += 1
 
 
+def merge_sorted_ll(head1, head2):
+    if head1 is None:
+        return head2
+    if head2 is None:
+        return head1
+
+    if head1.data > head2.data:
+        final_head = head2
+        final_tail = head2
+        head2 = head2.next
+    else:
+        final_head = head1
+        final_tail = head1
+        head1 = head1.next
+
+    while head1 is not None and head2 is not None:
+        if head1.data > head2.data:
+            final_tail.next = head2
+            final_tail = final_tail.next
+            head2 = head2.next
+        else:
+            final_tail.next = head1
+            final_tail = final_tail.next
+            head1 = head1.next
+    if head1 is not None:
+        final_tail.next = head1
+    if head2 is not None:
+        final_tail.next = head2
+    return final_head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -234,15 +265,15 @@ def input_ll():
     return head
 
 
-Head = input_ll()
-print_ll(Head)
+# Head = input_ll()
+# print_ll(Head)
 # print(length_ll(Head))
 # print(print_i_node_ll(Head, 3))
 # Head = insert_at_i_pos(Head, 2, 100)
 # print_ll(Head)
 # Head = delete_node(Head, 3)
 # print_ll(Head)
-print(length_recursive(Head))
+# print(length_recursive(Head))
 # Head = insert_at_pos_rec(Head, 1, 70)
 # print_ll(Head)
 # Head = delete_node_rec(Head, 2)
@@ -262,4 +293,10 @@ print(length_recursive(Head))
 # print_ll(Head)
 # Head = reverse_ll_rec_4(Head)
 # print_ll(Head)
-mid_point_ll(Head)
+# mid_point_ll(Head)
+Head1 = input_ll()
+Head2 = input_ll()
+print_ll(Head1)
+print_ll(Head2)
+Head = merge_sorted_ll(Head1, Head2)
+print_ll(Head)
