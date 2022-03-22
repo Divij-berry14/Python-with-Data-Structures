@@ -244,12 +244,12 @@ def merge_sorted_ll(head1, head2):
 def linear_search_recursive(head, n):
     if head is None:
         return -1
-    if head.data is n:
+    if head.data == n:
         return 0
     temp = linear_search_recursive(head.next, n)
-    if temp is -1:
+    if temp == -1:
         return -1
-    return 1 + temp
+    return temp + 1
 
 
 def print_ll(head):
