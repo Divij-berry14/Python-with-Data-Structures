@@ -241,6 +241,17 @@ def merge_sorted_ll(head1, head2):
     return final_head
 
 
+def linear_search_recursive(head, n):
+    if head is None:
+        return -1
+    if head.data is n:
+        return 0
+    temp = linear_search_recursive(head.next, n)
+    if temp is -1:
+        return -1
+    return 1 + temp
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -265,8 +276,8 @@ def input_ll():
     return head
 
 
-# Head = input_ll()
-# print_ll(Head)
+Head = input_ll()
+print_ll(Head)
 # print(length_ll(Head))
 # print(print_i_node_ll(Head, 3))
 # Head = insert_at_i_pos(Head, 2, 100)
@@ -294,9 +305,10 @@ def input_ll():
 # Head = reverse_ll_rec_4(Head)
 # print_ll(Head)
 # mid_point_ll(Head)
-Head1 = input_ll()
-Head2 = input_ll()
-print_ll(Head1)
-print_ll(Head2)
-Head = merge_sorted_ll(Head1, Head2)
-print_ll(Head)
+# Head1 = input_ll()
+# Head2 = input_ll()
+# print_ll(Head1)
+# print_ll(Head2)
+# Head = merge_sorted_ll(Head1, Head2)
+# print_ll(Head)
+print(linear_search_recursive(Head, 20010))
