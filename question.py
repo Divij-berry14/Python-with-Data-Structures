@@ -252,6 +252,36 @@ def linear_search_recursive(head, n):
     return temp + 1
 
 
+def odd_even_ll(head):
+    if head is None:
+        return head
+    curr = head
+    even_head = None
+    even_tail = None
+    odd_head = None
+    odd_tail = None
+    while curr is not None:
+        if curr.data % 2 != 0:
+            if odd_head is None:
+                odd_head = curr
+                odd_tail = curr
+            else:
+                odd_tail.next = curr
+                odd_tail = curr
+        else:
+            if even_head is None:
+                even_tail = curr
+                even_head = curr
+            else:
+                even_tail.next = curr
+                even_tail = curr
+        curr = curr.next
+    if odd_head is None:
+        return even_head
+    odd_tail.next = even_head
+    return odd_head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -311,4 +341,6 @@ print_ll(Head)
 # print_ll(Head2)
 # Head = merge_sorted_ll(Head1, Head2)
 # print_ll(Head)
-print(linear_search_recursive(Head, 20010))
+# print(linear_search_recursive(Head, 20010))
+Head = odd_even_ll(Head)
+print_ll(Head)
