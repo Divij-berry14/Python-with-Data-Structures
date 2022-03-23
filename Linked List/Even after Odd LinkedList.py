@@ -1,58 +1,64 @@
-# Problem ID 331 even after odd in a LL
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
-def arrange_LinkedList(head):
-    curr=head
-    Ehead=None
-    Etail=None
-    Ohead=None
-    Otail=None
-    while curr is not None:
-        if curr.data%2==0:
-            if Ehead is None:
-                Ehead=curr
-                Etail=curr
-            else:
-                Etail.next=curr
-                Etail=curr
-        else:
-            if Ohead is None:
-                Ohead=curr
-                Otail=curr
-            else:
-                Otail.next=curr
-                Otail=curr
-        #curr.next=None
-        curr=curr.next
-    if Ohead is None:
-        return Ehead
-    Otail.next=Ehead
-    return Ohead
 
-def ll(arr):
-    if len(arr)==0:
-        return None
-    head = Node(arr[0])
-    last = head
-    for data in arr[1:]:
-        last.next = Node(data)
-        last = last.next
+def odd_even_ll(head):
+    if head is None:
+        return head
+    curr = head
+    even_head = None
+    even_tail = None
+    odd_head = None
+    odd_tail = None
+    while curr is not None:
+        if curr.data % 2 != 0:
+            if odd_head is None:
+                odd_head = curr
+                odd_tail = curr
+            else:
+                odd_tail.next = curr
+                odd_tail = curr
+        else:
+            if even_head is None:
+                even_tail = curr
+                even_head = curr
+            else:
+                even_tail.next = curr
+                even_tail = curr
+        curr = curr.next
+    if odd_head is None:
+        return even_head
+    odd_tail.next = even_head
+    return odd_head
+
+
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
+
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
+            break
+        new_node = Node(curr_val)
+        if head is None:
+            head = new_node
+            tail = new_node
+        else:
+            tail.next = new_node
+            tail = new_node
     return head
 
-def printll(head):
-    while head:
-        print(head.data, end=' ')
-        head = head.next
-    print()
 
-
-# MAIN
-# Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
-# Create a Linked list after removing -1 from list
-l = ll(arr[:-1])
-l = arrange_LinkedList(l)
-printll(l)
+Head = input_ll()
+print_ll(Head)
+Head = odd_even_ll(Head)
+print_ll(Head)
