@@ -282,6 +282,29 @@ def odd_even_ll(head):
     return odd_head
 
 
+def skip_m_delete_n(head, m, n):
+    if m == 0:
+        return
+    if head is None or n <= 0 or m <= 0:
+        return head
+    curr = head
+    while curr is not None:
+        for i in range(m-1):
+            if curr is None:
+                break
+            curr = curr.next
+        prev = curr
+        curr = curr.next
+        for i in range(n):
+            if curr is None:
+                break
+            curr = curr.next
+        prev.next = curr
+        # prev = curr
+        # curr = curr.next
+    return head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -342,5 +365,7 @@ print_ll(Head)
 # Head = merge_sorted_ll(Head1, Head2)
 # print_ll(Head)
 # print(linear_search_recursive(Head, 20010))
-Head = odd_even_ll(Head)
+# Head = odd_even_ll(Head)
+# print_ll(Head)
+Head = skip_m_delete_n(Head, 3, 2)
 print_ll(Head)
