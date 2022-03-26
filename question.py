@@ -305,6 +305,54 @@ def skip_m_delete_n(head, m, n):
     return head
 
 
+def swap_nodes_ll(head, i, j):
+    curr = head
+    count = 0
+    x = 0
+    y = 0
+    if i == j:
+        return head
+    while curr is not None:
+        if count == i:
+            x = curr.data
+        elif count == j:
+            y = curr.data
+        curr = curr.next
+        count += 1
+    if x == y:
+        return head
+
+    prev_x = None
+    curr_x = head
+    while curr_x is not None and curr_x.data != x:
+        prev_x = curr_x
+        curr_x = curr_x.next
+
+    prev_y = None
+    curr_y = head
+    while curr_y is not None and curr_y.data != y:
+        prev_y = curr_y
+        curr_y = curr_y.next
+
+    if curr_x is None or curr_y is None:
+        return head
+
+    if prev_x is not None:
+        prev_x.next = curr_y
+    else:
+        head = curr_y
+
+    if prev_y is not None:
+        prev_y.next = curr_x
+    else:
+        head = curr_x
+
+    temp = curr_x.next
+    curr_x.next = curr_y.next
+    curr_y.next = temp
+    return head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -367,5 +415,7 @@ print_ll(Head)
 # print(linear_search_recursive(Head, 20010))
 # Head = odd_even_ll(Head)
 # print_ll(Head)
-Head = skip_m_delete_n(Head, 3, 2)
+# Head = skip_m_delete_n(Head, 3, 2)
+# print_ll(Head)
+Head = swap_nodes_ll(Head, 3, 4)
 print_ll(Head)
