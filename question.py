@@ -353,6 +353,15 @@ def swap_nodes_ll(head, i, j):
     return head
 
 
+def k_reverse(head, n):
+    curr = head
+    prev = None
+    nex = None
+    count = 0
+    while curr is not None and count < n:
+        pass
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
