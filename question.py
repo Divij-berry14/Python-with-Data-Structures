@@ -368,6 +368,31 @@ def k_reverse(head, n):
     return prev
 
 
+def bubble_sort_ll(head):
+    n = length_ll(head)
+    for i in range(n-1):
+        curr = head
+        prev = None
+        for j in range(n - i - 1):
+            if curr.data <= curr.next.data:
+                prev = curr
+                curr = curr.next
+            else:
+                if prev is None:
+                    fwd = curr.next
+                    head = head.next
+                    curr.next = fwd.next
+                    fwd.next = curr
+                    prev = fwd
+                else:
+                    fwd = curr.next
+                    prev.next = fwd
+                    curr.next = fwd.next
+                    fwd.next = curr
+                    prev = fwd
+    return head
+
+
 def print_ll(head):
     while head is not None:
         print(head.data, "->", end="")
@@ -434,5 +459,7 @@ print_ll(Head)
 # print_ll(Head)
 # Head = swap_nodes_ll(Head, 0, 4)
 # print_ll(Head)
-Head = k_reverse(Head, 3)
+# Head = k_reverse(Head, 3)
+# print_ll(Head)
+Head = bubble_sort_ll(Head)
 print_ll(Head)
