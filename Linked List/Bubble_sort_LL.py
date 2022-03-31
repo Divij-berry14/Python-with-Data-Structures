@@ -3,64 +3,64 @@ class Node:
         self.data = data
         self.next = None
 
-def count(head):
-    if head is None:
-        return -1
-    i=1
-    while head.next is not None:
-        head=head.next
-        i+=1
-   
-    return i
-       
-def bubbleSortLL(head) :
-    n=count(head)
-    for i in range(n):
-        prev=None
-        x=None
-        if head.data>head.next.data:
-            x=head.next
-            head.next=x.next
-            x.next=head
-            head=x
-        c=head
-        while c is not None and c.next is not None:
-            next=c.next
-            if c==head.next:
-                prev=head
-            if c.data>next.data:
-                prev.next=c.next
-                c.next=next.next
-                next.next=c
-            else:
-                c=c.next
-           
-            if prev is not None:
-                prev=prev.next
-           
-    return head
-           
-       
-def ll(arr):
-    if len(arr)==0:
-        return None
-    head = Node(arr[0])
-    last = head
-    for data in arr[1:]:
-        last.next = Node(data)
-        last = last.next
-    return head
-
-def printll(head):
-    while head:
-        print(head.data, end=' ')
+def length_ll(head):
+    count = 0
+    while head is not None:
         head = head.next
-    print()
+        count += 1
+    return count
 
-# Main
-# Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
-# Create a Linked list after removing -1 from list
-l = ll(arr[:-1])
-l = bubbleSortLL(l)
-printll(l)
+
+def bubble_sort_ll(head):
+    n = length_ll(head)
+    for i in range(n-1):
+        curr = head
+        prev = None
+        for j in range(n - i - 1):
+            if curr.data <= curr.next.data:
+                prev = curr
+                curr = curr.next
+            else:
+                if prev is None:
+                    fwd = curr.next
+                    head = head.next
+                    curr.next = fwd.next
+                    fwd.next = curr
+                    prev = fwd
+                else:
+                    fwd = curr.next
+                    prev.next = fwd
+                    curr.next = fwd.next
+                    fwd.next = curr
+                    prev = fwd
+    return head
+
+
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
+
+
+def input_ll():
+    li_val = [int(i) for i in input().split()]
+    head = None
+    tail = None
+    for curr_val in li_val:
+        if curr_val is -1:
+            break
+        new_node = Node(curr_val)
+        if head is None:
+            head = new_node
+            tail = new_node
+        else:
+            tail.next = new_node
+            tail = new_node
+    return head
+
+
+Head = input_ll()
+print_ll(Head)
+Head = bubble_sort_ll(Head)
+print_ll(Head)
