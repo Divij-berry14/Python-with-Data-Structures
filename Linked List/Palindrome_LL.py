@@ -4,7 +4,9 @@ class Node:
         self.next = None
 
 
-def palindrome_ll(head):
+def palindrome_ll_list(head):
+    # O(n) space is used
+
     if head is None:
         return True
     s = []
@@ -18,6 +20,42 @@ def palindrome_ll(head):
             return False
         left = left + 1
         right = right - 1
+    return True
+
+
+def middle_node(head):
+    slow = head
+    fast = head
+    while fast.next.next is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
+
+def reverse_node(head):
+    prev = None
+    curr = head
+    while curr is not None:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    return prev
+
+
+def palindrome_ll(head):
+    # Without use of O(n) space
+    if head is None:
+        return None
+    mid_node = middle_node(head)
+    curr = head
+    reverse_head = reverse_node(mid_node.next)
+    while reverse_head is not None:
+        if curr.data != reverse_head.data:
+            return False
+        else:
+            curr = curr.next
+            reverse_head = reverse_head.next
     return True
 
 
@@ -47,4 +85,5 @@ def input_ll():
 
 Head = input_ll()
 print_ll(Head)
+# print(palindrome_ll_list(Head))
 print(palindrome_ll(Head))
