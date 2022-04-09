@@ -1,71 +1,94 @@
 class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
 
-def printLL(head):
-    while(head is not None):
-        print(str(head.data),"-->",end=' ')
-        head=head.next
-    print("None")
-    return 
+def reverse_ll(head):
+    curr = head
+    prev = None
+    while curr is not None:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    return prev
 
 
-def length(head):
-    count=0
+def reverse_ll_rec1(head):
+    if head is None or head.next is None:
+        return head
+    new_head = reverse_ll_rec1(head.next)
+    head.next.next = head
+    head.next = None
+    return new_head
+
+
+def length_ll(head):
+    count = 0
     while head is not None:
-        count=count+1
-        head=head.next
+        head = head.next
+        count += 1
     return count
 
-def insert_ith_LL(head,i):
-    count=0
-    curr=head
+
+def delete_ith_node_ll(i, head):
+    if i < 0 or i > length_ll(head):
+        return head
+    curr = head
+    tail = None
+    count = 0
+    if i is 0:
+        head = head.next
+        return head
     while curr is not None:
-        if count==i:
-            print(str(curr.data),end=' ')
-            break
-        else:
-            count=count+1
-            curr=curr.next
+        if count == i:
+            tail.next = curr.next
+            return head
+        tail = curr
+        curr = curr.next
+        count += 1
 
-def del_ith_rec(head,i):
-    curr=head
-    if head is None:
-        return None
-    if i==0:
-        p=curr.next
-        return p
-    smallhead=del_ith_rec(head.next,i-1)
-    head.next=smallhead
+
+def delete_ith_node_rec_ll(head, i):
+    if i is 0:
+        return head.next
+    temp = delete_ith_node_rec_ll(head.next, i-1)
+    head.next = temp
     return head
 
 
+def print_ll(head):
+    while head is not None:
+        print(head.data, "->", end="")
+        head = head.next
+    print("None")
 
 
-def inputLL():
-    head=None
-    tail=None
-    inputList=[int(x) for x in input().split()]
-    for currData in inputList:
-        if currData==-1:
+def input_ll():
+    li_val = [int(x) for x in input().split()]
+    head = None
+    tail = None
+    for i in li_val:
+        if i is -1:
             break
-        newNode=Node(currData)
+        new_node = Node(i)
         if head is None:
-            head=newNode
-            tail=newNode
+            head = new_node
+            tail = new_node
         else:
-            tail.next = newNode
-            tail = newNode
+            tail.next = new_node
+            tail = new_node
     return head
 
 
-head=inputLL()
-printLL(head)
-# insert_ith_LL(head,3)
-# printLL(head)
-# del_ith_rec(head,2)
-# printLL(head)
-head = ReverseLLII(head,2,5)
-printLL(head)
+Head = input_ll()
+print_ll(Head)
+# Head = reverse_ll(Head)
+# print_ll(Head)
+# Head = reverse_ll_rec1(Head)
+# print_ll(Head)
+# Head = delete_ith_node_ll(0, Head)
+# print_ll(Head)
+Head = delete_ith_node_rec_ll(Head, 1)
+print_ll(Head)
