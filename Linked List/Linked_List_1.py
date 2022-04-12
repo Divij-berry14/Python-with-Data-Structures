@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
+
 def LengthLL(head):
     count = 0
     while head is not None:
@@ -10,11 +11,13 @@ def LengthLL(head):
         head = head.next
     return count
 
+
 def LenghtLLRec(head):
     if head is None:
         return 0
     p = LenghtLLRec(head.next)+1
     return p
+
 
 def InsertNodeLL(head,data,i):
     if i < 0 or i > LenghtLLRec(head):
@@ -26,7 +29,7 @@ def InsertNodeLL(head,data,i):
     prev = None
     count = 0
     if i == 0:
-        newNode.next=head
+        newNode.next = head
         head = newNode
         curr = None
     while(curr is not None):
@@ -39,6 +42,7 @@ def InsertNodeLL(head,data,i):
         count += 1
     return head
 
+
 def InputNodeRec(head,data,i):
     if head is None:
         return None
@@ -50,6 +54,7 @@ def InputNodeRec(head,data,i):
     p = InsertNodeLL(head.next,data,i-1)
     head.next = p
     return head
+
 
 def DeleteNode(head,i):
     if i < 0 or i > LengthLL(head):
@@ -69,6 +74,7 @@ def DeleteNode(head,i):
         curr = curr.next
         count = count+1
     return head
+
 
 def AppendLastToFirst(head,n):
     if head is None:
@@ -91,6 +97,7 @@ def AppendLastToFirst(head,n):
     curr1.next = curr
     return temp1
 
+
 def RemoveDuplicatesLL(head):
     if head is None:
         return None
@@ -103,6 +110,7 @@ def RemoveDuplicatesLL(head):
             curr = curr.next
     return head
 
+
 def ReverseLL(head):
     if head is None:
         return None
@@ -114,6 +122,7 @@ def ReverseLL(head):
         prev = curr
         curr = temp
     return prev
+
 
 def PalindromeLL(head):
     if head is None:
@@ -130,6 +139,7 @@ def PalindromeLL(head):
         left = left + 1
         right = right - 1
     return True
+
 
 def ReverseLLII(head, m, n):
     start, prev, node, count = None, None, head, 1
@@ -173,6 +183,7 @@ def ReverseLLII(head, m, n):
     # curr1.next = prev
     # return head
 
+
 def MidElementLL(head):
     slow = head
     fast = head
@@ -181,6 +192,7 @@ def MidElementLL(head):
         fast = fast.next.next
     print(str(slow.data))
     return
+
 
 def merge_two_sorted_arrays(head1,head2):
     if head1 and head2 is None:
@@ -213,6 +225,7 @@ def merge_two_sorted_arrays(head1,head2):
 
     return finalHead
 
+
 def swapNodes(head, x, y):
     if head is None:
         return None
@@ -242,6 +255,7 @@ def swapNodes(head, x, y):
     currY.next = temp
     return head
 
+
 def nextLargerNodes(head):
     if head is None:
         return None
@@ -261,6 +275,7 @@ def nextLargerNodes(head):
                 res.append(temp[j])
                 break
     return res
+
 
 def OddEvenLL(head):
     if head is None:
@@ -293,7 +308,8 @@ def OddEvenLL(head):
     head = oddHead
     return head
 
-def skipMdeleteN(head, m, n):
+
+def skip_m_delete_n(head, m, n):
     if head is None:
         return None
     if m == 0:
@@ -317,7 +333,8 @@ def skipMdeleteN(head, m, n):
         prev.next = curr
     return head
 
-def printLL(head):
+
+def print_ll(head):
     count = 0
     while head is not None:
         print(head.data, "->", end=" ")
@@ -325,15 +342,15 @@ def printLL(head):
     print("None")
 
 
-def InputLL():
-    Inputli = [int(x) for x in input().split()]
+def input_ll():
+    input_li = [int(x) for x in input().split()]
     head = None
     tail = None
-    for currdata in Inputli:
-        if currdata == -1:
+    for curr_data in input_li:
+        if curr_data == -1:
             break
-        node = Node(currdata)
-        if head == None:
+        node = Node(curr_data)
+        if head is None:
             head = node
             tail = node
         else:
@@ -342,9 +359,10 @@ def InputLL():
 
     return head
 
-head = InputLL()
+
+Head = input_ll()
 # head2 =InputLL()
-printLL(head)
+print_ll(Head)
 # head = DeleteNode(head,3)
 # printLL(head)
 # print(LenghtLLRec(head))
@@ -354,14 +372,14 @@ printLL(head)
 # printLL(head)
 # head = AppendLastToFirst(head,4)
 # printLL(head)
-# head = RemoveDuplicatesLL(head)
-# printLL(head)
+Head = RemoveDuplicatesLL(Head)
+print_ll(Head)
 # head = ReverseLL(head)
 # printLL(head)
 # print(PalindromeLL(head))
 # head = ReverseLLII(head,2,3)
 # printLL(head)
-MidElementLL(head)
+MidElementLL(Head)
 # head = merge_two_sorted_arrays(head1, head2)
 # printLL(head)
 # head = OddEvenLL(head)
