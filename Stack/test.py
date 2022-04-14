@@ -1,71 +1,57 @@
-# class Stack:
-#     def __init__(self):
-#         self.data = []
-#
-#     def push(self, data):
-#         self.data.append(data)
-#
-#     def pop(self):
-#         if self.isEmpty():
-#             print("Stack is empty")
-#             return
-#         return self.data.pop()
-#     def isEmpty(self):
-#         return self.size() == 0
-#
-#     def top(self):
-#         if self.isEmpty():
-#             print("I am Empty")
-#             return
-#         return self.data[len(self.data) -1]
-#
-#     def size(self):
-#         return len(self.data)
+from sys import stdin, setrecursionlimit
+setrecursionlimit(10 ** 6)
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+def reverseStack(inputStack, extraStack) :
+    if len(inputStack) == 0:
+        return;
 
-class Stack:
-    def __init__(self):
-        self.head = None
-        self.count = 0
+    lastElement = inputStack.pop()
+    print("dsd")
 
-    def push(self, data):
-        node = Node(data)
-        node.next = self.head
-        self.head = node
-        self.count += 1
+    reverseStack(inputStack, extraStack);
 
-    def pop(self):
-        if self.isEmpty():
-            print("Stack is empty")
-            return
-        value = self.head.data
-        self.head = self.head.next
-        self.count -= 1
-        return value
+    while not isEmpty(inputStack):
+        top = inputStack.pop()
+        print("2w", top, inputStack)
+        extraStack.append(top)
 
-    def top(self):
-        if self.isEmpty():
-            print("Empty Stack")
-            return
-        data = self.head.data
-        return data
+    inputStack.append(lastElement)
+    print("1w",inputStack)
+    while not isEmpty(extraStack):
+        top = extraStack.pop()
+        inputStack.append(top)
+        print("3", inputStack)
 
-    def size(self):
-        return self.count
 
-    def isEmpty(self):
-        return self.size() == 0
 
-s = Stack()
-s.push(1)
-s.push(2)
-s.push(3)
-s.push(4)
-while s.isEmpty() is False:
-    print(s.pop())
-s.pop()
-# print("end")
+'''-------------- Utility Functions --------------'''
+
+#Takes a list as a stack and returns whether the stack is empty or not
+def isEmpty(stack) :
+    return len(stack) == 0
+
+
+
+#Taking input using fast I/o method
+def takeInput() :
+    size = int(stdin.readline().strip())
+    inputStack = list()
+
+    if size == 0:
+        return inputStack
+
+
+    values = list(map(int, stdin.readline().strip().split(" ")))
+    inputStack = values
+
+    return inputStack
+
+
+#main
+inputStack = takeInput()
+emptyStack = list()
+
+reverseStack(inputStack, emptyStack)
+
+while not isEmpty(inputStack) :
+    print(inputStack.pop(), end = " ")
