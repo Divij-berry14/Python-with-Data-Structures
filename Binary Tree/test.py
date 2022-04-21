@@ -55,21 +55,21 @@ def PrintDepthK(root,k):
 def NodesGreater(root,k):
     if root == None:
         return 0
-    c=0
-    if root.data>k:
-        c=c+1
-    c=c+NodesGreater(root.left,k)
-    c=c+NodesGreater(root.right,k)
+    c = 0
+    if root.data > k:
+        c = c+1
+    c = c+NodesGreater(root.left,k)
+    c = c+NodesGreater(root.right,k)
     return c
 
 def checkNodePresent(root,k):
     if root==None:
         return
-    if root.data==k:
+    if root.data == k:
         return True
-    if checkNodePresent(root.left,k):
+    if checkNodePresent(root.left, k):
         return True
-    if checkNodePresent(root.right,k):
+    if checkNodePresent(root.right, k):
         return True
     return False
 
@@ -157,7 +157,7 @@ def DiameterBT(root):
     print(leftD,rightD)
     printDetailTree(root)
     d = HeightTree(root.left) + HeightTree(root.right)
-    print("d",d)
+    print("d", d)
     return max(leftD, rightD, d)
 
 def MinimumDepth(root):
