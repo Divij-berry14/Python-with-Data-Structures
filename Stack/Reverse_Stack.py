@@ -2,21 +2,26 @@ from sys import setrecursionlimit
 setrecursionlimit(11000)
 
 
-def reverse_stack(s1, s2):
-    while len(s1) != 1:
-        ele = s1.pop()
-        s2.append(ele)
-    print(s2)
-    last_element = s1.pop()
-    print(last_element)
+def reverse_stack(input_stack, empty_stack):
+    while len(input_stack) == 0:
+        return
+    last_element = input_stack.pop()
 
-    while len(s2) != 0:
-        ele = s2.pop()
-        s1.append(ele)
-    print(s1)
-    reverse_stack(s1, s2)
-    s1.append(last_element)
-    print(s1)
+    reverse_stack(input_stack, empty_stack)
+
+    while not is_empty(input_stack):
+        top = input_stack.pop()
+        empty_stack.append(top)
+
+    input_stack.append(last_element)
+
+    while not is_empty(empty_stack):
+        top = empty_stack.pop()
+        input_stack.append(top)
+
+
+def is_empty(stack):
+    return len(stack) == 0
 
 
 n = int(input())
