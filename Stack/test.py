@@ -2,10 +2,9 @@ from sys import stdin, setrecursionlimit
 setrecursionlimit(10 ** 6)
 
 
-
-def reverseStack(inputStack, extraStack) :
+def reverseStack(inputStack, extraStack):
     if len(inputStack) == 0:
-        return;
+        return
 
     lastElement = inputStack.pop()
     print("dsd")
