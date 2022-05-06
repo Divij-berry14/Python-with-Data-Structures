@@ -1,4 +1,4 @@
-def sample(s)
+def sample(s):
     new_s = ""
     d = {}
     for i in range(len(s)-1):
