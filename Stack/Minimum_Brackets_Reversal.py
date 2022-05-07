@@ -23,13 +23,23 @@ def min_bracket_reversal(s):
         if i == "{":
             li.append(i)
         else:
-            if len(li) > 0 and li[-1] == "{":
+            if not is_empty(li) > 0 and top(li) == "{":
                 li.pop()
+            else:
+                li.append(i)
     temp = len(li)
     if temp % 2 == 0:
         return temp // 2
     else:
         return -1
+
+
+def is_empty(stack):
+    return len(stack) == 0
+
+
+def top(stack):
+    return stack[len(stack) - 1]
 
 
 string = input()
