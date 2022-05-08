@@ -18,6 +18,6 @@ def sample(s):
 
 # input = "hello_world_example"
 # output = "HelloWorldExample
-# input = 'aabbbaacccuusss'
+# input = 'aabbbaacccuussssss'
 # output = 'abacus'
 sample("hello_world_example")
