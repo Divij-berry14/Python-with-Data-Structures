@@ -3,51 +3,52 @@ class Node:
         self.data = data
         self.next = None
 
-class Stack_using_LL():
+
+class QueueLL:
     def __init__(self):
-        self.__head = None
-        self.__tail = None
-        self.__count = 0
-    
-    def Enqueue(self, data):
-        newNode = Node(data)
-        if self.__head == None and self.__tail == None:
-            self.__head = newNode
-            self.__tail = newNode
+        self.count = 0
+        self.front = None
+        self.tail = None
+
+    def enqueue(self, data):
+        new_node = Node(data)
+        if self.front is None and self.tail is None:
+            self.front = new_node
+            self.tail = new_node
         else:
-            self.__tail.next = newNode
-            self.__tail = newNode
-        self.__count += 1
-        
-    def Dequeue(self):
-        if self.__head is None:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.count += 1
+
+    def dequeue(self):
+        if self.is_empty():
+            return "Queue is Empty"
+        element = self.front.data
+        self.front = self.front.next
+        self.count -= 1
+        return element
+
+    def queue_front(self):
+        if self.front is None:
             print("Hey! Queue is Empty")
             return
-        element = self.__head.data
-        self.__head = self.__head.next
-        self.__count = self.__count-1
+        element = self.front.data
         return element
-    
-    def Queue_Front(self):
-        if self.__head is None:
-            print("Hey! Queue is Emptyy")
-            return
-        element = self.__head.data
-        return element
-    
-    def isEmpty(self):
-        return self.Qsize() == 0
-    
-    def Qsize(self):
-        return self.__count   #return Boolean, True/False
-    
-q=Stack_using_LL()
-q.Enqueue(1)
-q.Enqueue(2)
-q.Enqueue(3)
-q.Enqueue(4)
-q.Enqueue(5)
-q.Enqueue(6)
-while q.isEmpty() is False:
-    print(q.Dequeue())
-print(q.Queue_Front())
+
+    def is_empty(self):
+        return self.queue_size() == 0
+
+    def queue_size(self):
+        return self.count
+
+
+q = QueueLL()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+q.enqueue(4)
+q.enqueue(5)
+print(q.queue_front())
+while not q.is_empty():
+    print(q.dequeue())
+print(q.dequeue())

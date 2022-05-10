@@ -1,4 +1,4 @@
-class Queue_Using_Array:
+class QueueUsingArray:
 
     def __init__(self):
         self.__arr = []
@@ -29,7 +29,7 @@ class Queue_Using_Array:
         return self.size() == 0
 
 
-q = Queue_Using_Array()
+q = QueueUsingArray()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
