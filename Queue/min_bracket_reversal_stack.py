@@ -13,8 +13,9 @@
 #Sample Output 2 :
 #1
 
+
 def min_bracket_reversal(string):
-    if len(string)==0:
+    if len(string) == 0:
         return 0
     if len(string)%2!=0:
         return -1
