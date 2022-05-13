@@ -17,11 +17,11 @@
 def min_bracket_reversal(string):
     if len(string) == 0:
         return 0
-    if len(string)%2!=0:
+    if len(string) %2 != 0:
         return -1
-    s=[]
+    s = []
     for char in string:
-        if char=='{' :
+        if char == '{' :
             s.append(char)
         else:
             if (len(s)>0 and s[-1]=='{'):
