@@ -20,18 +20,18 @@ def longest_palindrome_string(s):
             st, end_s = start+1, end - 1
 
     # Even length
-    for i in range(n - 1):
-        start, end = i, i + 1
-        while start >= 0 and end < n:
-            if s[start] == s[end]:
-                start, end = start - 1, end + 1
-            else:
-                break
-        _len = end - start - 1
-        if _len > max_len:
-            max_len = _len
-            st, end_s = start + 1, end - 1
-
+    # for i in range(n - 1):
+    #     start, end = i, i + 1
+    #     while start >= 0 and end < n:
+    #         if s[start] == s[end]:
+    #             start, end = start - 1, end + 1
+    #         else:
+    #             break
+    #     _len = end - start - 1
+    #     if _len > max_len:
+    #         max_len = _len
+    #         st, end_s = start + 1, end - 1
+    #
     return s[st:end_s + 1]
 
 
