@@ -13,18 +13,17 @@
 #Sample Output 2 :
 #1
 
-
-def min_bracket_reversal(string):
-    if len(string) == 0:
+def min_bracket_reversal(string_):
+    if len(string_) == 0:
         return 0
-    if len(string) % 2 != 0:
+    if len(string_) % 2 != 0:
         return -1
     s = []
-    for char in string:
-        if char == '{' :
+    for char in string_:
+        if char == '{':
             s.append(char)
         else:
-            if len(s)>0 and s[-1] == '{':
+            if len(s) > 0 and s[-1] == '{':
                 s.pop()
 #            else:
 #                s.append(char)
