@@ -21,5 +21,6 @@ def Bubblesort(li):
                 li[j], li[j+1] = li[j+1], li[j]
     print(li)
 
+
 li = [int(x) for x in input().split()]
 Bubblesort(li)
