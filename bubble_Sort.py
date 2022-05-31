@@ -13,7 +13,7 @@
 # li = [int(x) for x in input().split()]
 # Bubble_Sort(li)
 
-def Bubblesort(li):
+def bubble_sort(li):
     l = len(li)
     for i in range(l):
         for j in range(l-1):
@@ -23,4 +23,4 @@ def Bubblesort(li):
 
 
 li = [int(x) for x in input().split()]
-Bubblesort(li)
+bubble_sort(li)
